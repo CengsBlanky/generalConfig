@@ -5,4 +5,5 @@
 !~/.vim/coc-settings.json
 !~/.vimrc
 !~/.zshrc
-!~/.emacs.d
+!~/.emacs.d/lisp/
+!~/.emacs.d/init.el
