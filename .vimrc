@@ -202,6 +202,7 @@ func! CompileRunCode()
         target_binary="a.exe"
     endif
     if filereadable('Makefile')
+        nnoremap <C-c> :make clean<CR>
         set makeprg=make\ -f\ Makefile
         exec "wall | !make && make run"
         return
@@ -338,6 +339,7 @@ else
     nnoremap <A-d> :!git diff<CR>
 endif
 nnoremap <leader>ca :wall <bar> Git add * <bar> Git commit -am "
+nnoremap <leader>cm :Git commit -am "
 " git push
 nnoremap <leader>ps :Git push<CR>
 " }}}
