@@ -7,3 +7,6 @@
 !~/.zshrc
 !~/.emacs.d/lisp/
 !~/.emacs.d/init.el
+!~/.gitconfig
+!~/bin/*
+!~/.tmux.conf
