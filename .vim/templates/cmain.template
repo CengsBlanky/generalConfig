@@ -1,0 +1,11 @@
+/**
+ * @author: {{NAME}} ({{EMAIL}})
+ * @created: {{YEAR}}/{{MONTH}}/{{DATE}} {{TIME}} {{DAY_FULL}}
+ * @filename: {{FILEE}}
+ */
+
+#include {{CURSOR}}
+
+int main(int argc, char *argv[]) {
+    return 0;
+}
