@@ -22,6 +22,12 @@ if has("gui_macvim")
     autocmd BufEnter * set guioptions+=!
     autocmd BufNewFile * set guioptions-=!
 endif
+" Fira code does not support italic
+if has("win32")
+    set guifont=Fira_Code:h12:cANSI:qDRAFT
+else
+    set guifont=Menlo:h19
+endif
 
 " }}}
 " OS {{{
@@ -368,11 +374,6 @@ set signcolumn=auto
 " enable true colors support
 set termguicolors     
 set t_Co=256
-" Fira code does not support italic
-if has("win32")
-    set guifont=Fira_Code:h12:cANSI:qDRAFT
-endif
-set guifont=Menlo:h20
 " enable Comment italic
 highlight Comment cterm=italic gui=italic
 
