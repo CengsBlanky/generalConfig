@@ -128,6 +128,7 @@ sysout="$(uname -s)"
 # 字符串比较一定要在=两边加上空格
 if [ "${sysout}" = "Darwin" ]; then
     export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.7.jdk/Contents/Home/"
+    export PATH="/Library/Java/JavaVirtualMachines/jdk-11.0.7.jdk/Contents/Home/:$PATH"
     alias la="exa --all --long --grid --links"
     alias l="exa --long --header --links --sort=name --git"
     alias python='python3.9'
