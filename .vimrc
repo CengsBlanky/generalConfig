@@ -4,29 +4,29 @@ let vim_config_file="~/.vimrc"
 let plugin_path="~/.vim/plugins/"
 let plug_file="~/.vim/plug.vim"
 let coc_config_file="~/.vim/coc-config.vim"
-let coc_setting_file="~/.vim/coc-settings.json"
-let coc_extentions_path="~/.vim/coc_extensions"
 " }}}
 " GUI {{{
-if has("gui")
-    set guioptions-=T
-    set guioptions-=m
-    set guioptions-=r
-    set guioptions-=L
-    set guioptions+=M
-    " keymappings {{{
-    " <shift-Enter> to create new line in normal mode
-    nnoremap <S-Enter> o<Esc>
-    if has("macunix")
-        set guioptions+=!
-    endif
-    " }}}
+" must put on top
+set guioptions-=T
+set guioptions-=m
+set guioptions-=r
+set guioptions-=L
+" do not allowed vim menu get loaded
+" because it might conflicts with some key binding
+" |CmdwinEnter|		after entering the command-line window
+" |CmdwinLeave|		before leaving the command-line window
+set guioptions+=M
+if has("gui_macvim")
+    set lines=48 columns=85
+    autocmd BufWritePre * set guioptions+=!
+    autocmd BufNewFile * set guioptions-=!
 endif
+
 " }}}
 " OS {{{
 
 " Mac {{{
-if has("macunix")
+if has("gui_macvim")
     " to use `Meta+{h,j,k,l}` to navigate windows from any mode: {{{
     tnoremap <D-h> <C-\><C-N><C-w>h
     tnoremap <D-j> <C-\><C-N><C-w>j
@@ -47,49 +47,11 @@ endif
 " }}}
 " Windows {{{
 if has("win32")
-    let language_set="en-us"
+    language_set="en-us"
     " Make shift-insert work like in Xterm
     map <S-Insert> <MiddleMouse>
     map! <S-Insert> <MiddleMouse>
-    " Use the internal diff if available. {{{
-    " Otherwise use the special 'diffexpr' for Windows.
-    if &diffopt !~# 'internal'
-    set diffexpr=MyDiff()
-    endif
-    function MyDiff()
-    let opt = '-a --binary '
-    if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-    if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-    let arg1 = v:fname_in
-    if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-    let arg1 = substitute(arg1, '!', '\!', 'g')
-    let arg2 = v:fname_new
-    if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-    let arg2 = substitute(arg2, '!', '\!', 'g')
-    let arg3 = v:fname_out
-    if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-    let arg3 = substitute(arg3, '!', '\!', 'g')
-    if $VIMRUNTIME =~ ' '
-        if &sh =~ '\<cmd'
-        if empty(&shellxquote)
-            let l:shxq_sav = ''
-            set shellxquote&
-        endif
-        let cmd = '"' . $VIMRUNTIME . '\diff"'
-        else
-        let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-        endif
-    else
-        let cmd = $VIMRUNTIME . '\diff'
-    endif
-    let cmd = substitute(cmd, '!', '\!', 'g')
-    silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
-    if exists('l:shxq_sav')
-        let &shellxquote=l:shxq_sav
-    endif
-    endfunction
-    endif
-    " }}}
+endif
 " }}}
 
 " }}}
@@ -97,8 +59,6 @@ if has("win32")
 " default {{{
 set nocompatible
 filetype plugin indent on
-" hide the mouse when typing
-set mousehide
 syntax on
 set fileformat=unix
 set fileformats=unix,dos
@@ -126,18 +86,17 @@ set confirm
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=100
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
 set noswapfile
 set noundofile
 set clipboard=unnamed
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
 " display
 set hlsearch
-set signcolumn=auto
-set lines=48 columns=85
+set mousehide
 set noshowmode
 set nocursorline
 set colorcolumn=81
@@ -149,6 +108,14 @@ set cmdheight=2
 " }}}
 " keymappings {{{
 
+" close current window or buffer
+if has("gui_macvim")
+    noremap <silent><D-w> :close<cr>
+    noremap <silent><D-b> :bd<cr>
+else
+    noremap <silent><A-w> :close<cr>
+    noremap <silent><A-b> :bd<cr>
+endif
 " use keystroke to open my vimrc
 nnoremap <F2> :execute 'edit' vim_config_file<CR>
 " foramt json by python
@@ -156,38 +123,25 @@ nnoremap <F4> :%!python -m json.tool<cr>
 " screen scroll add <nowait> to execute immediately
 " see autocmd_keymap_force
 nnoremap <S-space> <C-b>
-" use <leader> n to go next buffer
-" use <leader> p to go previous buffer
+" <shift-Enter> to create new line in normal mode
+nnoremap <S-Enter> o<Esc>
+" switch between buffers
 noremap <silent><nowait><leader>] :bn<CR>
 noremap <silent><nowait><leader>[ :bp<CR>
-" noremap <C-TAB> :bn<CR>
-" <meta>-b close current buffer
 " open file in tab with keys
 noremap <C-n> :tabedit 
 " cd to current file directory
 nnoremap <leader>cd :lcd %:p:h<cr>
-" use <leader>w to close current tab
-noremap <leader>w :tabclose<cr>
+" use <leader>w to close current window
+" noremap <leader>w :close<CR>
 " use <leader>t to go next tab
-noremap <leader>t :tabnext<cr>
+noremap <leader>t :tabnext<CR>
 " map <esc> to quit terminal mode
 tnoremap <Esc> <C-\><C-n>
 " use <C-u> uppercase current word
 " use <C-l> lowercase current word
 nnoremap <C-u> gUiw
 nnoremap <C-l> guiw
-if has("macunix")
-    " close window
-    noremap <silent><D-w> :close<cr>
-    " close current buffer
-    " note: D means meta key in mac
-    noremap <silent><D-b> :bd<cr>
-else
-    " close window
-    noremap <silent><A-w> :close<cr>
-    " close current buffer
-    noremap <silent><A-b> :bd<cr>
-endif
 
 " to use `ALT+{h,j,k,l}` to navigate windows from any mode: {{{
 tnoremap <A-h> <C-\><C-N><C-w>h
@@ -207,12 +161,12 @@ nnoremap <A-l> <C-w>l
 " }}}
 " autocmd {{{
 
-augroup filetype_vim
+augroup filetype_vim_specific
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
-augroup filetype_indent
+augroup filetype_indent_size
     autocmd!
     autocmd FileType html,htm,javascript,typescript,vue setlocal tabstop=2 shiftwidth=2
 augroup END
@@ -222,10 +176,7 @@ augroup filetype_styleset
     autocmd FileType json,txt,vim setlocal colorcolumn=0
 augroup END
 
-" when enter terminal mode, auto switch to insert mode
-autocmd TerminalOpen * startinsert
-
-" when insert newline with command "o", do not auto insert comment
+" do not auto add comment when add new line in normal mode
 autocmd BufEnter * setlocal formatoptions-=o
 
 " when creating new buffer, auto switch to insert mode
@@ -261,7 +212,7 @@ func! CompileRunCode()
     endif
 endfunc
 
-augroup exe_code
+augroup exe_single_file_code
     autocmd!
     autocmd FileType c,cpp,java,python,javascript 
             \ nnoremap <buffer> <localleader>r
@@ -357,12 +308,10 @@ let g:airline#extensions#fugitiveline#enabled = 1
 let g:airline_skip_empty_sections = 1
 " let g:airline_theme='papercolor'
 " let g:airline_theme='onehalfdark'
-let g:airline_theme='onehalflight'
-if has("win32")
-    let g:airline_left_alt_sep = ''
-    let g:airline_right_alt_sep = ''
-    let g:airline_left_sep = ''
-    let g:airline_right_sep = ''
+if has("gui_running")
+    let g:airline_theme='onehalflight'
+else
+    let g:airline_theme='onehalfdark'
 endif
 
 " }}}
@@ -373,13 +322,13 @@ let g:gitgutter_sign_modified = '*'
 let g:gitgutter_sign_removed = '-'
 " }}}
 " vim fugitive config {{{
-if has("macunix")
-    nnoremap <M-s> :Git status<CR>
-    nnoremap <M-d> :!git diff<CR>
-else
+if has("gui_macvim")
     nnoremap <D-s> :Git status<CR>
     " add guioptions '!' and make terminal output colored in mac
     nnoremap <D-d> :!git diff<CR>
+else
+    nnoremap <A-s> :Git status<CR>
+    nnoremap <A-d> :!git diff<CR>
 endif
 nnoremap <leader>ca :wall <bar> Git add * <bar> Git commit -am "
 " git push
@@ -389,27 +338,34 @@ nnoremap <leader>ps :Git push<CR>
 nnoremap <leader>f :Files<cr>
 " }}}
 " colorscheme plugin {{{
-let ayucolor="light"  " for light version of theme
+if has("gui_running")
+    " for light version of theme
+    let ayucolor="light"
+else
+    let ayucolor="dark"
+endif
 let g:onedark_terminal_italics=1
 let g:onedark_hide_endofbuffer=1
 " let ayucolor="mirage" " for mirage version of theme
-" let ayucolor="dark"   " for dark version of theme
 
 " }}}
 
 " }}}
 " colorscheme {{{
-colorscheme ayu
+if has("gui_running")
+    colorscheme ayu
+else
+    colorscheme onedark
+endif
+" colorscheme onedark
 " colorscheme onehalflight
 " colorscheme gruvbox
-" colorscheme onedark
 " colorscheme onehalflight
 " colorscheme onehalfdark
 
+set signcolumn=auto
 " enable true colors support
 set termguicolors     
-" terminal setting
-set termguicolors 
 set t_Co=256
 " Fira code does not support italic
 if has("win32")
