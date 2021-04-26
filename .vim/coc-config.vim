@@ -1,6 +1,14 @@
 let g:coc_config_home="~/.vim/"
 " Global extension names to install when they aren't installed.
-let g:coc_global_extensions=[]
+let g:coc_global_extensions=['coc-json', 'coc-xml',
+            \ 'coc-cmake', 'coc-clangd',
+            \ 'coc-eslint', 'coc-tslint',
+            \ 'coc-tsserver',
+            \ 'coc-pyright',
+            \ 'coc-java',
+            \ 'coc-go',
+            \ 'coc-rls',
+            \ 'coc-sh']
 " Configure the directory which will be used to for coc data
 " files(extensions...)
 let g:coc_data_home="~/.vim/coc_data/"
