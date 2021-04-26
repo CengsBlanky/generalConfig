@@ -19,6 +19,7 @@ set guioptions+=M
 if has("gui_macvim")
     set lines=48 columns=85
     set guioptions+=!
+    autocmd BufEnter * set guioptions+=!
     autocmd BufNewFile * set guioptions-=!
 endif
 
