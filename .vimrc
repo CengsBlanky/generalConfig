@@ -26,7 +26,7 @@ endif
 if has("win32")
     set guifont=Fira_Code:h12:cANSI:qDRAFT
 else
-    set guifont=Menlo:h19
+    set guifont=Menlo:h16
 endif
 
 " }}}
@@ -316,6 +316,7 @@ let g:airline#extensions#tabline#enabled = 1
 " enable fugitive show git info
 let g:airline#extensions#fugitiveline#enabled = 1
 let g:airline_skip_empty_sections = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 " let g:airline_theme='papercolor'
 " let g:airline_theme='onehalfdark'
 if has("gui_running")
