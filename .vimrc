@@ -54,7 +54,7 @@ endif
 " }}}
 " Windows {{{
 if has("win32")
-    language_set="en-us"
+    let language_set="en-us"
     " Make shift-insert work like in Xterm
     map <S-Insert> <MiddleMouse>
     map! <S-Insert> <MiddleMouse>
@@ -380,3 +380,5 @@ set t_Co=256
 highlight Comment cterm=italic gui=italic
 
 " }}}
+
+" TODO add .vscode config file
