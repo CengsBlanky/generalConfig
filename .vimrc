@@ -99,6 +99,8 @@ set nowritebackup
 set noswapfile
 set noundofile
 set clipboard=unnamed
+" add ctags support 
+set tags=tags
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 " display
