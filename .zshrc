@@ -81,6 +81,7 @@ ZSH_THEME=""
 source $ZSH/oh-my-zsh.sh
 
 # pure zsh
+fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
 # change the color for both `prompt:success` and `prompt:error`
 zstyle ':prompt:pure:prompt:*' color cyan
