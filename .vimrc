@@ -13,8 +13,6 @@ set guioptions-=r
 set guioptions-=L
 " do not allowed vim menu get loaded
 " because it might conflicts with some key binding
-" |CmdwinEnter|		after entering the command-line window
-" |CmdwinLeave|		before leaving the command-line window
 set guioptions+=M
 if has("gui_macvim")
     set lines=48 columns=85
@@ -24,7 +22,7 @@ if has("gui_macvim")
 endif
 " Fira code does not support italic
 if has("win32")
-    set guifont=Fira_Code:h12:cANSI:qDRAFT
+    set guifont=Fira_Code:h12
 else
     set guifont=Menlo:h16
 endif
