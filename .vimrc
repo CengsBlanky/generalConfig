@@ -125,7 +125,7 @@ else
 endif
 " use keystroke to open my vimrc
 nnoremap <F2> :execute 'edit' vim_config_file<CR>
-" foramt json by python
+" format json by python
 nnoremap <F4> :%!python -m json.tool<cr>
 " screen scroll add <nowait> to execute immediately
 " see autocmd_keymap_force
