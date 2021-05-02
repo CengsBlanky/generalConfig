@@ -17,7 +17,7 @@ set guioptions-=L
 " |CmdwinLeave|		before leaving the command-line window
 set guioptions+=M
 if has("gui_macvim")
-    set lines=48 columns=85
+    set lines=48 columns=108
     set guioptions+=!
     autocmd BufEnter * set guioptions+=!
     autocmd BufNewFile * set guioptions-=!
@@ -210,7 +210,7 @@ func! CompileRunCode()
         return
     endif
     if &filetype=="c"
-        exec join(["write | !gcc -Wall %:p &&", target_binary], " ")
+        exec join(["write | !gcc -Wall % &&", target_binary], " ")
     elseif &filetype=="cpp"
         exec join(["write | !g++ -Wall %:p &&", target_binary], " ")
     elseif &filetype=="java"
