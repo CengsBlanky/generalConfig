@@ -13,8 +13,6 @@ set guioptions-=r
 set guioptions-=L
 " do not allowed vim menu get loaded
 " because it might conflicts with some key binding
-" |CmdwinEnter|		after entering the command-line window
-" |CmdwinLeave|		before leaving the command-line window
 set guioptions+=M
 if has("gui_macvim")
     set lines=48 columns=108
@@ -24,7 +22,7 @@ if has("gui_macvim")
 endif
 " Fira code does not support italic
 if has("win32")
-    set guifont=Fira_Code:h12:cANSI:qDRAFT
+    set guifont=Fira_Code:h12
 else
     set guifont=Menlo:h16
 endif
@@ -127,7 +125,7 @@ else
 endif
 " use keystroke to open my vimrc
 nnoremap <F2> :execute 'edit' vim_config_file<CR>
-" foramt json by python
+" format json by python
 nnoremap <F4> :%!python -m json.tool<cr>
 " screen scroll add <nowait> to execute immediately
 " see autocmd_keymap_force
@@ -182,7 +180,7 @@ augroup END
 
 augroup filetype_styleset
     autocmd!
-    autocmd FileType json,txt,vim setlocal colorcolumn=0
+    autocmd FileType json,txt,vim,xml,properties setlocal colorcolumn=0
 augroup END
 
 " do not auto add comment when add new line in normal mode
