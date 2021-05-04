@@ -142,6 +142,9 @@ fi
 # llvm setting
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH="/usr/local/opt/llvm:$PATH"
+# in linux raspberry pi
+export PATH="/lib/llvm-9/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include"
 export TERM=xterm
+
