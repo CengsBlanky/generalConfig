@@ -212,7 +212,7 @@ func! CompileRunCode()
     elseif &filetype=="cpp"
         exec join(["write | !g++ -Wall %:p &&", target_binary], " ")
     elseif &filetype=="java"
-        exec "write | !javac %:p && java %<"
+        exec "write | !javac %:p && java %:p:r"
     elseif &filetype=="python"
         exec "write | !python %:p"
     elseif &filetype=="javascript"
@@ -251,7 +251,10 @@ Plug 'tibabit/vim-templates'
 " show git diff in gutter
 Plug 'airblade/vim-gitgutter'
 " tabnine AI code completion
-Plug 'codota/tabnine-vim'
+" abandoned because use too much CPU
+if !has('gui_running')
+    Plug 'codota/tabnine-vim'
+endif
 " fuzzy finder for vim
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
