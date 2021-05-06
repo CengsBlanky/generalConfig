@@ -212,7 +212,7 @@ func! CompileRunCode()
     elseif &filetype=="cpp"
         exec join(["write | !g++ -Wall %:p &&", target_binary], " ")
     elseif &filetype=="java"
-        exec "write | !javac %:p && java %:p:r"
+        exec "write | !javac %:p && java %:r"
     elseif &filetype=="python"
         exec "write | !python %:p"
     elseif &filetype=="javascript"
