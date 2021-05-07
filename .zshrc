@@ -130,6 +130,8 @@ sysout="$(uname -s)"
 if [ "${sysout}" = "Darwin" ]; then
     export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.7.jdk/Contents/Home/"
     export PATH="/Library/Java/JavaVirtualMachines/jdk-11.0.7.jdk/Contents/Home/:$PATH"
+    # add rust path
+    export PATH="$HOME/.cargo/bin:$PATH"
     alias la="exa --all --long --grid --links"
     alias l="exa --long --header --links --sort=name --git"
     alias python='python3.9'
@@ -140,6 +142,9 @@ fi
 # llvm setting
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH="/usr/local/opt/llvm:$PATH"
+# in linux raspberry pi
+export PATH="/lib/llvm-9/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include"
 export TERM=xterm
+

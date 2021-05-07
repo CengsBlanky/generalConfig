@@ -16,7 +16,7 @@ set guioptions-=L
 " because it might conflicts with some key binding
 set guioptions+=M
 if has("gui_macvim")
-    set lines=48 columns=85
+    set lines=48 columns=108
     set guioptions+=!
     autocmd BufEnter * set guioptions+=!
     autocmd BufNewFile * set guioptions-=!
@@ -180,7 +180,7 @@ augroup END
 
 augroup filetype_styleset
     autocmd!
-    autocmd FileType json,txt,vim,xml,properties setlocal colorcolumn=0
+    autocmd FileType json,text,vim,xml,properties setlocal colorcolumn=0
 augroup END
 
 " do not auto add comment when add new line in normal mode
@@ -208,11 +208,11 @@ func! CompileRunCode()
         return
     endif
     if &filetype=="c"
-        exec join(["write | !gcc -Wall %:p &&", target_binary], " ")
+        exec join(["write | !gcc -Wall % &&", target_binary], " ")
     elseif &filetype=="cpp"
         exec join(["write | !g++ -Wall %:p &&", target_binary], " ")
     elseif &filetype=="java"
-        exec "write | !javac %:p && java %<"
+        exec "write | !javac %:p && java %:r"
     elseif &filetype=="python"
         exec "write | !python %:p"
     elseif &filetype=="javascript"
@@ -251,7 +251,10 @@ Plug 'tibabit/vim-templates'
 " show git diff in gutter
 Plug 'airblade/vim-gitgutter'
 " tabnine AI code completion
-Plug 'codota/tabnine-vim'
+" abandoned because use too much CPU
+if !has('gui_running')
+    Plug 'codota/tabnine-vim'
+endif
 " fuzzy finder for vim
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
