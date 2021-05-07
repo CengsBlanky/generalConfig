@@ -4,6 +4,7 @@ let vim_config_file="~/.vimrc"
 let plugin_path="~/.vim/plugins/"
 let plug_file="~/.vim/plug.vim"
 let coc_config_file="~/.vim/coc-config.vim"
+
 " }}}
 " GUI {{{
 " must put on top
@@ -58,7 +59,6 @@ if has("win32")
     map! <S-Insert> <MiddleMouse>
 endif
 " }}}
-
 " }}}
 " editor {{{
 " default {{{
@@ -199,7 +199,7 @@ augroup END
 func! CompileRunCode()
     let target_binary="./a.out"
     if has("win32")
-        target_binary="a.exe"
+        let target_binary="a.exe"
     endif
     if filereadable('Makefile')
         nnoremap <C-c> :make clean<CR>
@@ -373,7 +373,7 @@ endif
 " colorscheme onehalflight
 " colorscheme onehalfdark
 
-set signcolumn=auto
+set signcolumn=yes
 " enable true colors support
 set termguicolors     
 set t_Co=256
