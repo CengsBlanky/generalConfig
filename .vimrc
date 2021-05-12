@@ -252,9 +252,7 @@ Plug 'tibabit/vim-templates'
 Plug 'airblade/vim-gitgutter'
 " tabnine AI code completion
 " abandoned because use too much CPU
-if !has('gui_running')
-    Plug 'codota/tabnine-vim'
-endif
+" Plug 'codota/tabnine-vim'
 " fuzzy finder for vim
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
