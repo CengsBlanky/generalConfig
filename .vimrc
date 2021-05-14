@@ -4,6 +4,7 @@ let vim_config_file="~/.vimrc"
 let plugin_path="~/.vim/plugins/"
 let plug_file="~/.vim/plug.vim"
 let coc_config_file="~/.vim/coc-config.vim"
+
 " }}}
 " GUI {{{
 " must put on top
@@ -42,7 +43,6 @@ if has("win32")
     map! <S-Insert> <MiddleMouse>
 endif
 " }}}
-
 " }}}
 " editor {{{
 " default {{{
@@ -232,11 +232,6 @@ Plug 'mcchrish/nnn.vim'
 Plug 'tibabit/vim-templates'
 " show git diff in gutter
 Plug 'airblade/vim-gitgutter'
-" tabnine AI code completion
-" abandoned because use too much CPU
-" if !has('gui_running')
-"     Plug 'codota/tabnine-vim'
-" endif
 " vim rust plugin
 Plug 'rust-lang/rust.vim'
 " fuzzy finder for vim
@@ -365,6 +360,7 @@ endif
 " colorscheme onehalflight
 " colorscheme onehalfdark
 
+set signcolumn=yes
 " enable true colors support
 set termguicolors     
 set t_Co=256
