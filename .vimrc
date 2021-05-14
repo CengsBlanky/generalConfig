@@ -163,6 +163,7 @@ augroup END
 augroup filetype_styleset
     autocmd!
     autocmd FileType json,text,vim,xml,properties setlocal colorcolumn=0
+    autocmd FileType rust setlocal colorcolumn=99
 augroup END
 
 " do not auto add comment when add new line in normal mode
