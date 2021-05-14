@@ -31,22 +31,6 @@ endif
 " OS {{{
 
 " Mac {{{
-if has("gui_macvim")
-    " to use `Meta+{h,j,k,l}` to navigate windows from any mode: {{{
-    tnoremap <D-h> <C-\><C-N><C-w>h
-    tnoremap <D-j> <C-\><C-N><C-w>j
-    tnoremap <D-k> <C-\><C-N><C-w>k
-    tnoremap <D-l> <C-\><C-N><C-w>l
-    inoremap <D-h> <C-\><C-N><C-w>h
-    inoremap <D-j> <C-\><C-N><C-w>j
-    inoremap <D-k> <C-\><C-N><C-w>k
-    inoremap <D-l> <C-\><C-N><C-w>l
-    nnoremap <D-h> <C-w>h
-    nnoremap <D-j> <C-w>j
-    nnoremap <D-k> <C-w>k
-    nnoremap <D-l> <C-w>l
-    " }}}
-endif
 " }}}
 " Linux {{{
 " }}}
@@ -107,6 +91,7 @@ set mousehide
 set noshowmode
 set nocursorline
 set colorcolumn=81
+set signcolumn=yes
 set linebreak
 set sidescroll=5
 set listchars+=precedes:<,extends:>
@@ -116,13 +101,8 @@ set cmdheight=2
 " keymappings {{{
 
 " close current window or buffer
-if has("gui_macvim")
-    noremap <silent><D-w> :close<cr>
-    noremap <silent><D-b> :bd<cr>
-else
-    noremap <silent><A-w> :close<cr>
-    noremap <silent><A-b> :bd<cr>
-endif
+noremap <silent><M-w> :close<cr>
+noremap <silent><M-b> :bd<cr>
 " use keystroke to open my vimrc
 nnoremap <F2> :execute 'edit' vim_config_file<CR>
 " format json by python
@@ -132,6 +112,8 @@ nnoremap <F4> :%!python -m json.tool<cr>
 nnoremap <S-space> <C-b>
 " <shift-Enter> to create new line in normal mode
 nnoremap <S-Enter> o<Esc>
+" <leader> <Enter> to create new line in normal mode
+nnoremap <silent><nowait><leader><Enter> o<Esc>
 " switch between buffers
 noremap <silent><nowait><leader>] :bn<CR>
 noremap <silent><nowait><leader>[ :bp<CR>
@@ -150,19 +132,19 @@ tnoremap <Esc> <C-\><C-n>
 nnoremap <C-u> gUiw
 nnoremap <C-l> guiw
 
-" to use `ALT+{h,j,k,l}` to navigate windows from any mode: {{{
-tnoremap <A-h> <C-\><C-N><C-w>h
-tnoremap <A-j> <C-\><C-N><C-w>j
-tnoremap <A-k> <C-\><C-N><C-w>k
-tnoremap <A-l> <C-\><C-N><C-w>l
-inoremap <A-h> <C-\><C-N><C-w>h
-inoremap <A-j> <C-\><C-N><C-w>j
-inoremap <A-k> <C-\><C-N><C-w>k
-inoremap <A-l> <C-\><C-N><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
+" to use `ALT/Meta+{h,j,k,l}` to navigate windows from any mode: {{{
+tnoremap <M-h> <C-\><C-N><C-w>h
+tnoremap <M-j> <C-\><C-N><C-w>j
+tnoremap <M-k> <C-\><C-N><C-w>k
+tnoremap <M-l> <C-\><C-N><C-w>l
+inoremap <M-h> <C-\><C-N><C-w>h
+inoremap <M-j> <C-\><C-N><C-w>j
+inoremap <M-k> <C-\><C-N><C-w>k
+inoremap <M-l> <C-\><C-N><C-w>l
+nnoremap <M-h> <C-w>h
+nnoremap <M-j> <C-w>j
+nnoremap <M-k> <C-w>k
+nnoremap <M-l> <C-w>l
 " }}}
 
 " }}}
@@ -199,7 +181,7 @@ augroup END
 func! CompileRunCode()
     let target_binary="./a.out"
     if has("win32")
-        target_binary="a.exe"
+        let target_binary="a.exe"
     endif
     if filereadable('Makefile')
         nnoremap <C-c> :make clean<CR>
@@ -222,8 +204,8 @@ endfunc
 
 augroup exe_single_file_code
     autocmd!
-    autocmd FileType c,cpp,java,python,javascript 
-            \ nnoremap <buffer> <localleader>r
+    autocmd FileType c,cpp,java,python,javascript
+            \ nnoremap <nowait><buffer> <leader>r
             \ :call CompileRunCode()<CR>
 augroup END
 
@@ -252,9 +234,11 @@ Plug 'tibabit/vim-templates'
 Plug 'airblade/vim-gitgutter'
 " tabnine AI code completion
 " abandoned because use too much CPU
-if !has('gui_running')
-    Plug 'codota/tabnine-vim'
-endif
+" if !has('gui_running')
+"     Plug 'codota/tabnine-vim'
+" endif
+" vim rust plugin
+Plug 'rust-lang/rust.vim'
 " fuzzy finder for vim
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -267,6 +251,8 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'joshdick/onedark.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'sheerun/vim-polyglot'
+" vim webAPIs
+Plug 'mattn/webapi-vim'
 
 call plug#end()
 " }}}
@@ -339,8 +325,8 @@ if has("gui_macvim")
     " add guioptions '!' and make terminal output colored in mac
     nnoremap <D-d> :!git diff<CR>
 else
-    nnoremap <A-s> :Git status<CR>
-    nnoremap <A-d> :!git diff<CR>
+    nnoremap <M-s> :Git status<CR>
+    nnoremap <M-d> :!git diff<CR>
 endif
 nnoremap <leader>ca :wall <bar> Git add * <bar> Git commit -am "
 nnoremap <leader>cm :Git commit -am "
@@ -362,6 +348,9 @@ let g:onedark_hide_endofbuffer=1
 " let ayucolor="mirage" " for mirage version of theme
 
 " }}}
+" rust.vim setting {{{
+let g:rustfmt_autosave = 1
+" }}}
 
 " }}}
 " colorscheme {{{
@@ -376,7 +365,6 @@ endif
 " colorscheme onehalflight
 " colorscheme onehalfdark
 
-set signcolumn=auto
 " enable true colors support
 set termguicolors     
 set t_Co=256
