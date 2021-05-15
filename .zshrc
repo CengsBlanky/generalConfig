@@ -117,8 +117,8 @@ prompt pure
 
 alias ll='ls -lAh'
 alias vim='nvim'
-alias python="python3"
-alias pip="pip3"
+alias python="python3.9"
+alias pip="pip3.9"
 
 export TERM=xterm-256color
 export "LANG=en_US.UTF-8"

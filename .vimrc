@@ -109,9 +109,7 @@ nnoremap <silent><F2> :execute 'edit' vim_config_file<CR>
 nnoremap <F4> :%!python -m json.tool<cr>
 " screen scroll add <nowait> to execute immediately
 " see autocmd_keymap_force
-nnoremap <S-space> <C-b>
-" <shift-Enter> to create new line in normal mode
-nnoremap <S-Enter> o<Up><Esc>
+nnoremap <BS> <C-b>
 " <leader> <Enter> to create new line in normal mode
 nnoremap <silent><nowait><leader><Enter> o<Up><Esc>
 " switch between buffers
@@ -164,7 +162,7 @@ augroup END
 
 augroup filetype_styleset
     autocmd!
-    autocmd FileType json,text,vim,xml,properties setlocal colorcolumn=0
+    autocmd FileType json,text,markdown,vim,xml,properties setlocal colorcolumn=0
     autocmd FileType rust setlocal colorcolumn=99
 augroup END
 
@@ -251,6 +249,8 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'sheerun/vim-polyglot'
 " vim webAPIs
 Plug 'mattn/webapi-vim'
+" easymotion 
+Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 " }}}
@@ -332,7 +332,7 @@ nnoremap <leader>cm :Git commit -am "
 nnoremap <leader>ps :Git push<CR>
 " }}}
 " fzf config {{{
-nnoremap <leader>f :Files<cr>
+nnoremap <leader>z :Files<cr>
 " }}}
 " colorscheme plugin {{{
 if has("gui_running")
@@ -348,6 +348,9 @@ let g:onedark_hide_endofbuffer=1
 " }}}
 " rust.vim setting {{{
 let g:rustfmt_autosave = 1
+" }}}
+" easymotion {{{
+map <leader> <Plug>(easymotion-prefix)
 " }}}
 
 " }}}
