@@ -162,7 +162,7 @@ augroup END
 
 augroup filetype_styleset
     autocmd!
-    autocmd FileType json,text,markdown,vim,xml,properties setlocal colorcolumn=0
+    autocmd FileType json,text,markdown,vim,xml,properties,toml setlocal colorcolumn=0
     autocmd FileType rust setlocal colorcolumn=99
 augroup END
 
