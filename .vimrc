@@ -91,6 +91,7 @@ set noshowmode
 set nocursorline
 set colorcolumn=81
 set signcolumn=yes
+set textwidth=0
 set linebreak
 set sidescroll=5
 set listchars+=precedes:<,extends:>
@@ -349,6 +350,7 @@ let g:onedark_hide_endofbuffer=1
 let g:rustfmt_autosave = 1
 " }}}
 " easymotion {{{
+" use <leader>w to invoke easymotion, so do not add use <leader>w keybinding again
 map <leader> <Plug>(easymotion-prefix)
 " }}}
 
