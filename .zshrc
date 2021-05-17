@@ -119,8 +119,6 @@ alias ll='ls -lAh'
 alias vim='nvim'
 alias python="python3.9"
 alias pip="pip3.9"
-
-export TERM=xterm-256color
 export "LANG=en_US.UTF-8"
 
 # find out which system type I am currently use
@@ -138,13 +136,12 @@ if [ "${sysout}" = "Darwin" ]; then
     alias pip='/usr/local/opt/python@3.9/bin/pip3'
 elif [ "${sysout}" = "Linux" ]; then
     alias l="ls -lAh"
+    # llvm setting
+    export PATH="/usr/local/opt/llvm/bin:$PATH"
+    export PATH="/usr/local/opt/llvm:$PATH"
+    # in linux raspberry pi
+    export PATH="/lib/llvm-9/bin:$PATH"
+    export LDFLAGS="-L/usr/local/opt/llvm/lib"
+    export CPPFLAGS="-I/usr/local/opt/llvm/include"
 fi
-# llvm setting
-export PATH="/usr/local/opt/llvm/bin:$PATH"
-export PATH="/usr/local/opt/llvm:$PATH"
-# in linux raspberry pi
-export PATH="/lib/llvm-9/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/llvm/lib"
-export CPPFLAGS="-I/usr/local/opt/llvm/include"
-export TERM=xterm
 
