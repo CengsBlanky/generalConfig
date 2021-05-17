@@ -91,7 +91,6 @@ set noshowmode
 set nocursorline
 set colorcolumn=81
 set signcolumn=yes
-set textwidth=0
 set linebreak
 set sidescroll=5
 set listchars+=precedes:<,extends:>
@@ -166,8 +165,12 @@ augroup filetype_styleset
     autocmd FileType rust setlocal colorcolumn=99
 augroup END
 
-" do not auto add comment when add new line in normal mode
-autocmd BufEnter * setlocal formatoptions-=o
+augroup filetype_edit_behavior
+    autocmd!
+    autocmd FileType * setlocal textwidth=0
+    " do not auto add comment when add new comment line in normal mode
+    autocmd FileType * setlocal formatoptions-=o
+augroup END
 
 " when creating new buffer, auto switch to insert mode
 autocmd BufNewFile * startinsert
