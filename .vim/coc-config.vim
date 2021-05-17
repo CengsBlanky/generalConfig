@@ -6,8 +6,8 @@ let g:coc_global_extensions=['coc-json', 'coc-xml',
             \ 'coc-tsserver',
             \ 'coc-pyright',
             \ 'coc-java',
-            \ 'coc-go',
-            \ 'coc-sh']
+            \ 'coc-go'
+            \ ]
 " Configure the directory which will be used to for coc data
 " files(extensions...)
 let g:coc_data_home="~/.vim/coc_data/"
