@@ -363,6 +363,13 @@ let g:rustfmt_autosave = 1
 " use <leader>w to invoke easymotion, so do not add use <leader>w keybinding again
 map <leader> <Plug>(easymotion-prefix)
 " }}}
+" markdown plugin{{{
+" keybinding
+augroup markdown_keybinding
+    autocmd!
+    autocmd FileType markdown nnoremap <silent><leader>t :TableFormat<CR>
+augroup END
+" }}}
 
 " }}}
 " colorscheme {{{
