@@ -17,7 +17,6 @@ set guioptions-=L
 set guioptions+=M
 if has("gui_macvim")
     set lines=48 columns=108
-    set guioptions+=!
     autocmd BufEnter * set guioptions+=!
     autocmd BufNewFile * set guioptions-=!
 endif
@@ -108,7 +107,8 @@ nnoremap <silent><F2> :execute 'edit' vim_config_file<CR>
 " format json by python
 nnoremap <F4> :%!python -m json.tool<cr>
 " screen scroll add <nowait> to execute immediately
-" see autocmd_keymap_force
+" see autocmd_keymap_force to set scroll down
+" use backspace to scroll up
 nnoremap <BS> <C-b>
 " <leader> <Enter> to create new line in normal mode
 nnoremap <silent><nowait><leader><Enter> o<Up><Esc>
@@ -125,10 +125,9 @@ nnoremap <leader>cd :lcd %:p:h<cr>
 noremap <leader>t :tabnext<CR>
 " map <esc> to quit terminal mode
 tnoremap <Esc> <C-\><C-n>
-" use <C-u> uppercase current word
-" use <C-l> lowercase current word
-nnoremap <C-u> gUiw
-nnoremap <C-l> guiw
+" upper or lower wordcase
+nnoremap <leader>u gUiw
+nnoremap <leader>l guiw
 " open NERDTreeToggle
 noremap <silent><F1> :NERDTreeToggle<CR>
 
@@ -162,7 +161,7 @@ augroup END
 
 augroup filetype_styleset
     autocmd!
-    autocmd FileType json,text,markdown,vim,xml,properties setlocal colorcolumn=0
+    autocmd FileType json,text,markdown,vim,xml,properties,toml setlocal colorcolumn=0
     autocmd FileType rust setlocal colorcolumn=99
 augroup END
 
