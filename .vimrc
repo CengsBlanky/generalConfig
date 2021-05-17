@@ -254,6 +254,13 @@ Plug 'sheerun/vim-polyglot'
 Plug 'mattn/webapi-vim'
 " easymotion 
 Plug 'easymotion/vim-easymotion'
+" fileype and syntax plugin for LaTeX filest
+Plug 'lervag/vimtex'
+" markdown plugin
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+" toml file plugin
+Plug 'cespare/vim-toml'
 
 call plug#end()
 " }}}
