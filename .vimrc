@@ -156,7 +156,7 @@ augroup END
 
 augroup filetype_indent_size
     autocmd!
-    autocmd FileType html,htm,javascript,typescript,vue setlocal tabstop=2 shiftwidth=2
+    autocmd FileType html,htm,css,javascript,typescript,vue setlocal tabstop=2 shiftwidth=2
 augroup END
 
 augroup filetype_styleset
@@ -194,7 +194,7 @@ func! CompileRunCode()
         return
     endif
     if &filetype=="c"
-        exec join(["write | !gcc -Wall % &&", target_binary], " ")
+        exec join(["write | !gcc -Wall *.c &&", target_binary], " ")
     elseif &filetype=="cpp"
         exec join(["write | !g++ -Wall %:p &&", target_binary], " ")
     elseif &filetype=="java"
@@ -250,6 +250,8 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'joshdick/onedark.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'sheerun/vim-polyglot'
+" css color preview
+Plug 'ap/vim-css-color'
 " vim webAPIs
 Plug 'mattn/webapi-vim'
 " easymotion 
