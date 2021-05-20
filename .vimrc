@@ -17,7 +17,6 @@ set guioptions-=L
 set guioptions+=M
 if has("gui_macvim")
     set lines=48 columns=108
-    set guioptions+=!
     autocmd BufEnter * set guioptions+=!
     autocmd BufNewFile * set guioptions-=!
 endif
@@ -108,10 +107,9 @@ nnoremap <silent><F2> :execute 'edit' vim_config_file<CR>
 " format json by python
 nnoremap <F4> :%!python -m json.tool<cr>
 " screen scroll add <nowait> to execute immediately
-" see autocmd_keymap_force
-nnoremap <S-space> <C-b>
-" <shift-Enter> to create new line in normal mode
-nnoremap <S-Enter> o<Up><Esc>
+" see autocmd_keymap_force to set scroll down
+" use backspace to scroll up
+nnoremap <BS> <C-b>
 " <leader> <Enter> to create new line in normal mode
 nnoremap <silent><nowait><leader><Enter> o<Up><Esc>
 " switch between buffers
@@ -127,10 +125,9 @@ nnoremap <leader>cd :lcd %:p:h<cr>
 noremap <leader>t :tabnext<CR>
 " map <esc> to quit terminal mode
 tnoremap <Esc> <C-\><C-n>
-" use <C-u> uppercase current word
-" use <C-l> lowercase current word
-nnoremap <C-u> gUiw
-nnoremap <C-l> guiw
+" upper or lower wordcase
+nnoremap <leader>u gUiw
+nnoremap <leader>l guiw
 " open NERDTreeToggle
 noremap <silent><F1> :NERDTreeToggle<CR>
 
@@ -159,17 +156,21 @@ augroup END
 
 augroup filetype_indent_size
     autocmd!
-    autocmd FileType html,htm,javascript,typescript,vue setlocal tabstop=2 shiftwidth=2
+    autocmd FileType html,htm,css,javascript,typescript,vue setlocal tabstop=2 shiftwidth=2
 augroup END
 
 augroup filetype_styleset
     autocmd!
-    autocmd FileType json,text,vim,xml,properties setlocal colorcolumn=0
+    autocmd FileType json,text,markdown,vim,xml,properties,toml setlocal colorcolumn=0
     autocmd FileType rust setlocal colorcolumn=99
 augroup END
 
-" do not auto add comment when add new line in normal mode
-autocmd BufEnter * setlocal formatoptions-=o
+augroup filetype_edit_behavior
+    autocmd!
+    autocmd FileType * setlocal textwidth=0
+    " do not auto add comment when add new comment line in normal mode
+    autocmd FileType * setlocal formatoptions-=o
+augroup END
 
 " when creating new buffer, auto switch to insert mode
 autocmd BufNewFile * startinsert
@@ -193,7 +194,7 @@ func! CompileRunCode()
         return
     endif
     if &filetype=="c"
-        exec join(["write | !gcc -Wall % &&", target_binary], " ")
+        exec join(["write | !gcc -Wall *.c &&", target_binary], " ")
     elseif &filetype=="cpp"
         exec join(["write | !g++ -Wall %:p &&", target_binary], " ")
     elseif &filetype=="java"
@@ -249,8 +250,19 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'joshdick/onedark.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'sheerun/vim-polyglot'
+" css color preview
+Plug 'ap/vim-css-color'
 " vim webAPIs
 Plug 'mattn/webapi-vim'
+" easymotion 
+Plug 'easymotion/vim-easymotion'
+" fileype and syntax plugin for LaTeX filest
+Plug 'lervag/vimtex'
+" markdown plugin
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+" toml file plugin
+Plug 'cespare/vim-toml'
 
 call plug#end()
 " }}}
@@ -332,7 +344,7 @@ nnoremap <leader>cm :Git commit -am "
 nnoremap <leader>ps :Git push<CR>
 " }}}
 " fzf config {{{
-nnoremap <leader>f :Files<cr>
+nnoremap <leader>z :Files<cr>
 " }}}
 " colorscheme plugin {{{
 if has("gui_running")
@@ -349,6 +361,17 @@ let g:onedark_hide_endofbuffer=1
 " rust.vim setting {{{
 let g:rustfmt_autosave = 1
 " }}}
+" easymotion {{{
+" use <leader>w to invoke easymotion, so do not add use <leader>w keybinding again
+map <leader> <Plug>(easymotion-prefix)
+" }}}
+" markdown plugin{{{
+" keybinding
+augroup markdown_keybinding
+    autocmd!
+    autocmd FileType markdown nnoremap <silent><leader>t :TableFormat<CR>
+augroup END
+" }}}
 
 " }}}
 " colorscheme {{{
@@ -363,7 +386,6 @@ endif
 " colorscheme onehalflight
 " colorscheme onehalfdark
 
-set signcolumn=yes
 " enable true colors support
 set termguicolors     
 set t_Co=256
