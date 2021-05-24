@@ -263,6 +263,8 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 " toml file plugin
 Plug 'cespare/vim-toml'
+" use unicode in vim easily
+Plug 'chrisbra/unicode.vim'
 
 call plug#end()
 " }}}
