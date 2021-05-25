@@ -265,6 +265,9 @@ Plug 'plasticboy/vim-markdown'
 Plug 'cespare/vim-toml'
 " use unicode in vim easily
 Plug 'chrisbra/unicode.vim'
+" org-mode for vim
+Plug 'jceb/vim-orgmode'
+Plug 'vim-autoformat/vim-autoformat'
 
 call plug#end()
 " }}}
