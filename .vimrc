@@ -319,13 +319,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#fugitiveline#enabled = 1
 let g:airline_skip_empty_sections = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-" let g:airline_theme='papercolor'
-" let g:airline_theme='onehalfdark'
-if has("gui_running")
-    let g:airline_theme='onehalflight'
-else
-    let g:airline_theme='onehalfdark'
-endif
 
 " }}}
 " git-gutter {{{
@@ -382,14 +375,18 @@ augroup END
 " colorscheme {{{
 if has("gui_running")
     colorscheme ayu
+    let g:airline_theme='onehalflight'
 else
     colorscheme onedark
+    let g:airline_theme='onehalfdark'
 endif
 " colorscheme onedark
 " colorscheme onehalflight
 " colorscheme gruvbox
 " colorscheme onehalflight
 " colorscheme onehalfdark
+" let g:airline_theme='papercolor'
+" let g:airline_theme='onehalfdark'
 
 " enable true colors support
 set termguicolors     
