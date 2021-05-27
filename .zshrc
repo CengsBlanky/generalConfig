@@ -76,7 +76,7 @@ ZSH_THEME=""
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# plugins=(git)
+plugins=(zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -86,6 +86,7 @@ autoload -U promptinit; promptinit
 # change the color for both `prompt:success` and `prompt:error`
 zstyle ':prompt:pure:prompt:*' color cyan
 prompt pure
+PURE_PROMPT_SYMBOL="➜"
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
