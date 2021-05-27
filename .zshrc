@@ -77,9 +77,11 @@ ZSH_THEME=""
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(zsh-autosuggestions)
+autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
 
+# source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # pure zsh
 fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
@@ -147,5 +149,3 @@ elif [ "${sysout}" = "Linux" ]; then
     export LDFLAGS="-L/usr/local/opt/llvm/lib"
     export CPPFLAGS="-I/usr/local/opt/llvm/include"
 fi
-
-
