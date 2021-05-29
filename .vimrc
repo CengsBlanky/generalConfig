@@ -268,6 +268,10 @@ Plug 'chrisbra/unicode.vim'
 " org-mode for vim
 Plug 'jceb/vim-orgmode'
 Plug 'vim-autoformat/vim-autoformat'
+" golang plugin
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" slide presentation based on markdown
+Plug 'sotte/presenting.vim'
 
 call plug#end()
 " }}}
@@ -369,6 +373,10 @@ augroup markdown_keybinding
     autocmd!
     autocmd FileType markdown nnoremap <silent><leader>t :TableFormat<CR>
 augroup END
+" }}}
+" vim go setting {{{
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 " }}}
 
 " }}}
