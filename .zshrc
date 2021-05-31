@@ -131,6 +131,9 @@ sysout="$(uname -s)"
 if [ "${sysout}" = "Darwin" ]; then
     export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-11.0.7.jdk/Contents/Home/"
     export PATH="/Library/Java/JavaVirtualMachines/jdk-11.0.7.jdk/Contents/Home/:$PATH"
+    # llvm setting
+    export PATH="/usr/local/opt/llvm/bin:$PATH"
+    export PATH="/usr/local/opt/llvm:$PATH"
     # add rust path
     export PATH="$HOME/.cargo/bin:$PATH"
     export NVM_DIR="$HOME/.nvm"
