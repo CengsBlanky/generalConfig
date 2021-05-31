@@ -172,13 +172,16 @@ augroup filetype_edit_behavior
     autocmd FileType * setlocal formatoptions-=o
 augroup END
 
-" when creating new buffer, auto switch to insert mode
-autocmd BufNewFile * startinsert
-
 augroup keymap_force
     autocmd!
     autocmd FileType * :nnoremap <nowait> <Space> <C-f><CR>
 augroup END
+
+" auto source vimrc after write
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
+" when creating new buffer, auto switch to insert mode
+autocmd BufNewFile * startinsert
+
 " }}}
 " code compile and run {{{
 
