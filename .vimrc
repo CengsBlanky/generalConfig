@@ -178,7 +178,7 @@ augroup keymap_force
 augroup END
 
 " auto source vimrc after write
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
+autocmd BufWritePost vim_config_file source vim_config_file 
 " when creating new buffer, auto switch to insert mode
 autocmd BufNewFile * startinsert
 
