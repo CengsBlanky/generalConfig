@@ -197,9 +197,9 @@ func! CompileRunCode()
         return
     endif
     if &filetype=="c"
-        exec join(["write | !gcc -Wall *.c &&", target_binary], " ")
+        exec join(["write | !gcc -Wall -g *.c &&", target_binary], " ")
     elseif &filetype=="cpp"
-        exec join(["write | !g++ -Wall %:p &&", target_binary], " ")
+        exec join(["write | !g++ -Wall -g *.cpp &&", target_binary], " ")
     elseif &filetype=="java"
         exec "write | !javac %:p && java %:r"
     elseif &filetype=="python"
@@ -408,3 +408,4 @@ highlight Comment cterm=italic gui=italic
 " }}}
 
 " TODO add .vscode config file
+" TODO setlocal relativenumber! <change window> setlocal relativenumber!
