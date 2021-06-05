@@ -1,9 +1,7 @@
 /**
- * @author: {{NAME}} ({{EMAIL}})
- * @created: {{YEAR}}/{{MONTH}}/{{DATE}} {{TIME}} {{DAY_FULL}}
- * @filename: {{FILEE}}
+ * @author      : {{NAME}} ({{EMAIL}})
+ * @created     : {{YEAR}}/{{MONTH}}/{{DATE}} {{TIME}} {{DAY_FULL}}
+ * @description : {{CURSOR}}
  */
-
-#include "{{FILE}}.h"
 
 {{CURSOR}}
