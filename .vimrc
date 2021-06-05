@@ -20,11 +20,11 @@ if has("gui_macvim")
     autocmd BufEnter * set guioptions+=!
     autocmd BufNewFile * set guioptions-=!
 endif
-" Fira code does not support italic
+
 if has("win32")
     set guifont=Fira_Code:h12
 else
-    set guifont=Menlo:h16
+    set guifont=Fira_Code:h16
 endif
 
 " }}}
