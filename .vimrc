@@ -20,11 +20,11 @@ if has("gui_macvim")
     autocmd BufEnter * set guioptions+=!
     autocmd BufNewFile * set guioptions-=!
 endif
-" Fira code does not support italic
+
 if has("win32")
     set guifont=Fira_Code:h12
 else
-    set guifont=Menlo:h16
+    set guifont=Fira_Code:h16
 endif
 
 " }}}
@@ -115,6 +115,7 @@ nnoremap <silent><nowait><leader><Enter> o<Up><Esc>
 " switch between buffers
 noremap <silent><nowait><leader>] :bn<CR>
 noremap <silent><nowait><leader>[ :bp<CR>
+nnoremap <silent><TAB> :bn<CR>
 " open file in tab with keys
 noremap <C-n> :tabedit 
 " cd to current file directory
@@ -206,12 +207,14 @@ func! CompileRunCode()
         exec "write | !python %:p"
     elseif &filetype=="javascript"
         exec "write | !node %:p"
+    elseif &filetype=="go"
+        exec "write | !go run %:p"
     endif
 endfunc
 
 augroup exe_single_file_code
     autocmd!
-    autocmd FileType c,cpp,java,python,javascript
+    autocmd FileType c,cpp,java,python,javascript,go
             \ nnoremap <nowait><buffer> <leader>r
             \ :call CompileRunCode()<CR>
 augroup END
@@ -275,6 +278,8 @@ Plug 'vim-autoformat/vim-autoformat'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " slide presentation based on markdown
 Plug 'sotte/presenting.vim'
+" filetype icon (always keeps at the last plugin list)
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 " }}}
@@ -378,6 +383,7 @@ augroup markdown_keybinding
 augroup END
 " }}}
 " vim go setting {{{
+" autocmd FileType go nmap <leader>r <Plug>(go-run-split)
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 " }}}
@@ -408,4 +414,4 @@ highlight Comment cterm=italic gui=italic
 " }}}
 
 " TODO add .vscode config file
-" TODO setlocal relativenumber! <change window> setlocal relativenumber!
+" TODO setlocal relativenumber! <change window> setlocal relativenumber! 
