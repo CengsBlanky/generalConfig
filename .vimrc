@@ -22,9 +22,9 @@ if has("gui_macvim")
 endif
 
 if has("win32")
-    set guifont=Fira_Code:h12
+    set guifont=FiraCode_NF:h12
 else
-    set guifont=Fira_Code:h16
+    set guifont=FiraCode_NF:h16
 endif
 
 " }}}
@@ -157,13 +157,13 @@ augroup END
 
 augroup filetype_indent_size
     autocmd!
-    autocmd FileType html,htm,css,javascript,typescript,vue setlocal tabstop=2 shiftwidth=2
+    autocmd FileType html,css,javascript,typescript,vue setlocal tabstop=2 shiftwidth=2
 augroup END
 
 augroup filetype_styleset
     autocmd!
     autocmd FileType json,text,markdown,vim,xml,properties,toml setlocal colorcolumn=0
-    autocmd FileType rust setlocal colorcolumn=99
+    autocmd FileType rust,html,vue setlocal colorcolumn=99
 augroup END
 
 augroup filetype_edit_behavior
