@@ -143,7 +143,8 @@ if [ "${sysout}" = "Darwin" ]; then
     alias python='python3.9'
     alias pip='/usr/local/opt/python@3.9/bin/pip3'
 elif [ "${sysout}" = "Linux" ]; then
-    alias l="ls -lAh"
+    alias l="ls -lh"
+    alias la="ls -lAh"
     # llvm setting
     export PATH="/usr/local/opt/llvm/bin:$PATH"
     export PATH="/usr/local/opt/llvm:$PATH"
