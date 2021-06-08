@@ -42,6 +42,7 @@ if has("win32")
     map! <S-Insert> <MiddleMouse>
 endif
 " }}}
+
 " }}}
 " editor {{{
 " default {{{
@@ -394,12 +395,12 @@ if has("gui_running")
     colorscheme ayu
     let g:airline_theme='onehalflight'
 else
-    colorscheme onedark
-    let g:airline_theme='onehalfdark'
+    colorscheme gruvbox
+    let g:gruvbox_italic=1
 endif
+
 " colorscheme onedark
 " colorscheme onehalflight
-" colorscheme gruvbox
 " colorscheme onehalflight
 " colorscheme onehalfdark
 " let g:airline_theme='papercolor'
