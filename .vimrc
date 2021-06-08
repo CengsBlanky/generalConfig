@@ -279,7 +279,7 @@ Plug 'vim-autoformat/vim-autoformat'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " slide presentation based on markdown
 Plug 'sotte/presenting.vim'
-" filetype icon (always keeps at the last plugin list)
+" filetype icon (always keeps at the bottom plugin list)
 Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
