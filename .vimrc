@@ -132,6 +132,9 @@ nnoremap <leader>u gUiw
 nnoremap <leader>l guiw
 " open NERDTreeToggle
 noremap <silent><F1> :NERDTreeToggle<CR>
+" split current window
+nnoremap <leader>- :split %<CR>
+
 
 " to use `ALT/Meta+{h,j,k,l}` to navigate windows from any mode: {{{
 tnoremap <M-h> <C-\><C-N><C-w>h
@@ -177,6 +180,12 @@ augroup END
 augroup keymap_force
     autocmd!
     autocmd FileType * :nnoremap <nowait> <Space> <C-f><CR>
+augroup END
+
+augroup windows_display
+    autocmd!
+    autocmd WinLeave * setlocal norelativenumber number
+    autocmd WinEnter * setlocal relativenumber
 augroup END
 
 " auto source vimrc after write
@@ -336,6 +345,8 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 " }}}
 " git-gutter {{{
 " coc-git has sign conflict, just don't use it
+let g:gitgutter_sign_priority = 0
+let g:gitgutter_sign_allow_clobber = 0
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '*'
 let g:gitgutter_sign_removed = '-'
