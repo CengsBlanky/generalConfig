@@ -407,9 +407,11 @@ let g:go_info_mode='gopls'
 " }}}
 " colorscheme {{{
 if has("gui_running")
+    set background=light
     colorscheme ayu
     let g:airline_theme='onehalflight'
 else
+    set background=dark
     colorscheme gruvbox
     let g:gruvbox_italic=1
 endif
@@ -430,4 +432,3 @@ highlight Comment cterm=italic gui=italic
 " }}}
 
 " TODO add .vscode config file
-" TODO setlocal relativenumber! <change window> setlocal relativenumber! 
