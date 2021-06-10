@@ -207,6 +207,10 @@ func! CompileRunCode()
         exec "wall | !make && make run"
         return
     endif
+    if filereadable('Cargo.toml')
+        exec "wall | !cargo run"
+        return
+    endif
     if &filetype=="c"
         exec join(["write | !gcc -Wall -g *.c &&", target_binary], " ")
     elseif &filetype=="cpp"
@@ -224,7 +228,7 @@ endfunc
 
 augroup exe_single_file_code
     autocmd!
-    autocmd FileType c,cpp,java,python,javascript,go
+    autocmd FileType c,cpp,java,python,javascript,go,rust
             \ nnoremap <nowait><buffer> <leader>r
             \ :call CompileRunCode()<CR>
 augroup END
