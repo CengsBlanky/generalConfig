@@ -136,6 +136,9 @@ nnoremap <leader>u gUiw
 nnoremap <leader>l guiw
 " open NERDTreeToggle
 noremap <silent><F1> :NERDTreeToggle<CR>
+" split current window
+nnoremap <leader>- :split %<CR>
+
 
 " to use `ALT/Meta+{h,j,k,l}` to navigate windows from any mode: {{{
 tnoremap <M-h> <C-\><C-N><C-w>h
@@ -183,6 +186,12 @@ augroup keymap_force
     autocmd FileType * :nnoremap <nowait> <Space> <C-f><CR>
 augroup END
 
+augroup windows_display
+    autocmd!
+    autocmd WinLeave * setlocal norelativenumber number
+    autocmd WinEnter * setlocal relativenumber
+augroup END
+
 " auto source vimrc after write
 autocmd BufWritePost vim_config_file source vim_config_file 
 " when creating new buffer, auto switch to insert mode
@@ -202,6 +211,10 @@ func! CompileRunCode()
         exec "wall | !make && make run"
         return
     endif
+    if filereadable('Cargo.toml')
+        exec "wall | !cargo run"
+        return
+    endif
     if &filetype=="c"
         exec join(["write | !gcc -Wall -g *.c &&", target_binary], " ")
     elseif &filetype=="cpp"
@@ -219,7 +232,7 @@ endfunc
 
 augroup exe_single_file_code
     autocmd!
-    autocmd FileType c,cpp,java,python,javascript,go
+    autocmd FileType c,cpp,java,python,javascript,go,rust
             \ nnoremap <nowait><buffer> <leader>r
             \ :call CompileRunCode()<CR>
 augroup END
@@ -283,7 +296,7 @@ Plug 'vim-autoformat/vim-autoformat'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " slide presentation based on markdown
 Plug 'sotte/presenting.vim'
-" filetype icon (always keeps at the last plugin list)
+" filetype icon (always keeps at the bottom plugin list)
 Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
@@ -340,6 +353,8 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 " }}}
 " git-gutter {{{
 " coc-git has sign conflict, just don't use it
+let g:gitgutter_sign_priority = 0
+let g:gitgutter_sign_allow_clobber = 0
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '*'
 let g:gitgutter_sign_removed = '-'
@@ -396,9 +411,11 @@ let g:go_info_mode='gopls'
 " }}}
 " colorscheme {{{
 if has("gui_running")
+    set background=light
     colorscheme ayu
     let g:airline_theme='onehalflight'
 else
+    set background=dark
     colorscheme gruvbox
     let g:gruvbox_italic=1
 endif
@@ -419,4 +436,3 @@ highlight Comment cterm=italic gui=italic
 " }}}
 
 " TODO add .vscode config file
-" TODO setlocal relativenumber! <change window> setlocal relativenumber! 
