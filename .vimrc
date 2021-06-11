@@ -71,6 +71,10 @@ set showcmd
 set laststatus=2
 set wildmenu
 set showmatch
+" when file has been chaged outside of vim buffer, autoload it
+set autoread
+" when switch between buffers or execute specific command save current buffer
+set autowrite
 set confirm
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
