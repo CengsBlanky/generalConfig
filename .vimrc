@@ -352,6 +352,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#fugitiveline#enabled = 1
 let g:airline_skip_empty_sections = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_left_sep = ''
 
 " }}}
 " git-gutter {{{
