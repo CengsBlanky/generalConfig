@@ -139,8 +139,8 @@ noremap <silent><F1> :NERDTreeToggle<CR>
 " split current window
 nnoremap <leader>- :split %<CR>
 " use <UP> and <DOWN> to scroll screen
-nnoremap <silent><UP> 1<C-U>
-nnoremap <silent><DOWN> 1<C-D>
+nnoremap <silent><UP> 1<C-U><DOWN>
+nnoremap <silent><DOWN> 1<C-D><UP>
 
 
 " to use `ALT/Meta+{h,j,k,l}` to navigate windows from any mode: {{{
