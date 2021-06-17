@@ -299,6 +299,10 @@ Plug 'vim-autoformat/vim-autoformat'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " slide presentation based on markdown
 Plug 'sotte/presenting.vim'
+" snippets engine and Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 " filetype icon (always keeps at the bottom plugin list)
 Plug 'ryanoasis/vim-devicons'
 
@@ -410,6 +414,15 @@ augroup END
 " autocmd FileType go nmap <leader>r <Plug>(go-run-split)
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+" }}}
+" UltiSnips {{{
+" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+" - https://github.com/Valloric/YouCompleteMe
+" - https://github.com/nvim-lua/completion-nvim
+let g:UltiSnipsExpandTrigger="<C-.>"
+let g:UltiSnipsJumpForwardTrigger="<C-]>"
+let g:UltiSnipsJumpBackwardTrigger="<C-[>"
+
 " }}}
 
 " }}}
