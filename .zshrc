@@ -141,6 +141,7 @@ if [ "${sysout}" = "Darwin" ]; then
     alias la="exa --all --long --grid --links"
     alias l="exa --long --header --links --sort=name --git"
     alias python='python3.9'
+    alias python3='python3.9'
     alias pip='/usr/local/opt/python@3.9/bin/pip3'
 elif [ "${sysout}" = "Linux" ]; then
     alias l="ls -lh"
@@ -152,4 +153,5 @@ elif [ "${sysout}" = "Linux" ]; then
     export PATH="/lib/llvm-9/bin:$PATH"
     export LDFLAGS="-L/usr/local/opt/llvm/lib"
     export CPPFLAGS="-I/usr/local/opt/llvm/include"
+    export PATH="~/.local/bin:$PATH"
 fi
