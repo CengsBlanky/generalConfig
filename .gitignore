@@ -1,6 +1,6 @@
 **/*
 !~/.vim/plug.vim
-!~/.vim/templates/*
+!~/.vim/templates/
 !~/.vim/coc-config.vim
 !~/.vim/coc-settings.json
 !~/.vimrc
