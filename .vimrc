@@ -453,3 +453,4 @@ highlight Comment cterm=italic gui=italic
 " }}}
 
 " TODO add .vscode config file
+" TODO enable linguiture in gvim
