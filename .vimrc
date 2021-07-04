@@ -195,6 +195,19 @@ augroup windows_display
     autocmd WinEnter * setlocal relativenumber
 augroup END
 
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
+
 " auto source vimrc after write
 autocmd BufWritePost vim_config_file source vim_config_file 
 " when creating new buffer, auto switch to insert mode
