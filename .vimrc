@@ -427,6 +427,7 @@ augroup END
 " autocmd FileType go nmap <leader>r <Plug>(go-run-split)
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+let g:go_template_autocreate=0
 " }}}
 " UltiSnips {{{
 " Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
