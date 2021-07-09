@@ -136,6 +136,9 @@ if [ "${sysout}" = "Darwin" ]; then
     export PATH="/usr/local/opt/llvm:$PATH"
     # add rust path
     export PATH="$HOME/.cargo/bin:$PATH"
+    # go path
+    export GOPATH="$HOME/go"
+    export GO111MODULE=off
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
     alias la="exa --all --long --grid --links"
