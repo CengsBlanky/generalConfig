@@ -118,8 +118,8 @@ nnoremap <BS> <C-b>
 " <leader> <Enter> to create new line in normal mode
 nnoremap <silent><nowait><leader><Enter> o<Up><Esc>
 " switch between buffers
-noremap <silent><nowait><leader>] :bn<CR>
-noremap <silent><nowait><leader>[ :bp<CR>
+nnoremap <silent><nowait><RIGHT> :bn<CR>
+nnoremap <silent><nowait><LEFT> :bp<CR>
 nnoremap <silent><TAB> :bn<CR>
 " open file in tab with keys
 noremap <C-n> :tabedit 
