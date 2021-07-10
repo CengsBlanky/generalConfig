@@ -85,7 +85,7 @@ set nowritebackup
 set noswapfile
 set noundofile
 set clipboard=unnamed
-" add ctags support 
+" add ctags support
 set tags=tags
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
@@ -116,13 +116,13 @@ nnoremap <F4> :%!python -m json.tool<cr>
 " use backspace to scroll up
 nnoremap <BS> <C-b>
 " <leader> <Enter> to create new line in normal mode
-nnoremap <silent><nowait><leader><Enter> o<Up><Esc>
+nnoremap <silent><nowait><leader><Enter> :set paste<CR>m`o<ESC>``:set nopaste<CR>
 " switch between buffers
 nnoremap <silent><nowait><RIGHT> :bn<CR>
 nnoremap <silent><nowait><LEFT> :bp<CR>
 nnoremap <silent><TAB> :bn<CR>
 " open file in tab with keys
-noremap <C-n> :tabedit 
+noremap <C-n> :tabedit
 " cd to current file directory
 nnoremap <leader>cd :lcd %:p:h<cr>
 " use <leader>w to close current window
@@ -177,12 +177,22 @@ augroup filetype_styleset
     autocmd FileType rust,html,vue,sh setlocal colorcolumn=99
 augroup END
 
+function TrimEndLines()
+    let save_cursor = getpos(".")
+    silent! %s#\($\n\s*\)\+\%$##
+    call setpos('.', save_cursor)
+endfunction
 augroup filetype_edit_behavior
     autocmd!
     autocmd FileType * setlocal textwidth=0
     " do not auto add comment when add new comment line in normal mode
     autocmd FileType * setlocal formatoptions-=o
+    " auto remove all trailing whitespace before saving
+    autocmd BufWritePre * :%s/\s\+$//e
+    " auto remove all trailing empty lines before saving
+    autocmd BufWritePre * call TrimEndLines()
 augroup END
+
 
 augroup keymap_force
     autocmd!
@@ -209,7 +219,7 @@ augroup BWCCreateDir
 augroup END
 
 " auto source vimrc after write
-autocmd BufWritePost vim_config_file source vim_config_file 
+autocmd BufWritePost vim_config_file source vim_config_file
 " when creating new buffer, auto switch to insert mode
 autocmd BufNewFile * startinsert
 
@@ -281,7 +291,7 @@ Plug 'rust-lang/rust.vim'
 " fuzzy finder for vim
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" better statusline 
+" better statusline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " colorscheme
@@ -294,7 +304,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'ap/vim-css-color'
 " vim webAPIs
 Plug 'mattn/webapi-vim'
-" easymotion 
+" easymotion
 Plug 'easymotion/vim-easymotion'
 " fileype and syntax plugin for LaTeX filest
 Plug 'lervag/vimtex'
@@ -348,7 +358,7 @@ let g:tmpl_author_name='zengshuai'
 let g:tmpl_author_email='zengs1994@gmail.com'
 " }}}
 " tpope commentary config{{{
-augroup commentary_vim 
+augroup commentary_vim
     autocmd!
     autocmd FileType c setlocal commentstring=//\ %s
     autocmd FileType cpp setlocal commentstring=//\ %s
@@ -459,7 +469,7 @@ endif
 " let g:airline_theme='onehalfdark'
 
 " enable true colors support
-set termguicolors     
+set termguicolors
 set t_Co=256
 " enable Comment italic
 highlight Comment cterm=italic gui=italic
