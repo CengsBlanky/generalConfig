@@ -11,9 +11,10 @@ ssh hostname@ipAddr
 下面介绍通过设置ssh密钥连接和修改配置文件，让ssh登录更加方便快捷
 
 ### 相关配置文件
+
 * ~/.ssh/config: 设置连接主机相关参数, 之后可以直接通过主机名登录
 
-```vimscript
+```
 Host openEuler
     Hostname 192.168.2.113
     User zeng

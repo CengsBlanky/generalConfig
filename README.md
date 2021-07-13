@@ -7,16 +7,20 @@ ssh hostname@ipAddr
 这种方式有两个缺点：
 1. 如果有很多服务器，用户名和IP地址很难记，容易混淆
 2. 效率很低，每次登录都要输入密码，流程繁琐，也不安全
+
 下面介绍通过设置ssh密钥连接和修改配置文件，让ssh登录更加方便快捷
 
 ### 相关配置文件
+
 * ~/.ssh/config: 设置连接主机相关参数, 之后可以直接通过主机名登录
-    ```
+
+```
 Host openEuler
     Hostname 192.168.2.113
     User zeng
     IdentityFile ~/.ssh/id_rsa
-    ```
+```
+
 这里，Host是一个主机助记名，可以设置为比较好区分的名称，Hostname为服务器IP地址，User是服务器端的用户名，IdentityFile是私钥文件地址
 * 在客户端生成密钥对`ssh-keygen -t rsa -f [~/.ssh/id_rsa]`，将生成的公钥内容复制到服务器端`~/.ssh/authorized_keys`文件中
 > 将公钥传到服务器端可以直接使用命令`ssh-copy-id <user>@<ip address>`, `authorized_keys`这个文件若不存在可以手动建立
