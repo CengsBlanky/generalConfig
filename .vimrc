@@ -274,7 +274,8 @@ Plug 'tpope/vim-surround'
 " vim comment toggle
 Plug 'tpope/vim-commentary'
 " auto insert paired brackets
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
+Plug 'cohama/lexima.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'qpkorr/vim-renamer'
