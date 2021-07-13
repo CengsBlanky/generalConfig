@@ -36,7 +36,7 @@ Host openEuler
 > 1. 直接将另一个用户的.ssh文件夹拷贝到自己的家目录下
 > 2. 重新生成ssh key建立连接
 
-## vim tricks
+## vim 使用技巧
 
 ### 以只读方式打开文件的方式：
 
