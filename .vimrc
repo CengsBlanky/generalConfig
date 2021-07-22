@@ -145,6 +145,26 @@ nnoremap <leader>- :split %<CR>
 nnoremap <silent><UP> 1<C-U><DOWN>
 nnoremap <silent><DOWN> 1<C-D><UP>
 
+"" Open explorer where current file is located {{{
+"" Only for win for now.
+func! File_manager() abort
+    " Windows only for now
+    if has("win32")
+        if exists("b:netrw_curdir")
+            let path = substitute(b:netrw_curdir, "/", "\\", "g")
+        elseif expand("%:p") == ""
+            let path = expand("%:p:h")
+        else
+            let path = expand("%:p")
+        endif
+        silent exe '!start explorer.exe /select,' .. path
+    else
+        echomsg "Not yet implemented!"
+    endif
+endfunc
+
+nnoremap <silent> gof :call File_manager()<CR>
+"}}}
 
 " to use `ALT/Meta+{h,j,k,l}` to navigate windows from any mode: {{{
 tnoremap <M-h> <C-\><C-N><C-w>h
