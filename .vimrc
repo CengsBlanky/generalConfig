@@ -452,14 +452,9 @@ let g:gitgutter_sign_modified = '*'
 let g:gitgutter_sign_removed = '-'
 " }}}
 " vim fugitive config {{{
-if has("gui_macvim")
-    nnoremap <M-s> :Git status<CR>
-    " add guioptions '!' and make terminal output colored in mac
-    nnoremap <M-d> :!git diff<CR>
-else
-    nnoremap <M-s> :Git status<CR>
-    nnoremap <M-d> :!git diff<CR>
-endif
+nnoremap <M-s> :Git status<CR>
+" add guioptions '!' and make terminal output colored in mac
+nnoremap <M-d> :!git diff<CR>
 nnoremap <leader>ca :wall <bar> Git add * <bar> Git commit -am "
 nnoremap <leader>cm :Git commit -am "
 " git push
