@@ -15,11 +15,6 @@ set guioptions-=L
 " do not allowed vim menu get loaded
 " because it might conflicts with some key binding
 set guioptions+=M
-if has("gui_macvim")
-    set lines=48 columns=108
-    autocmd BufEnter * set guioptions+=!
-    autocmd BufNewFile * set guioptions-=!
-endif
 
 if has("win32")
     set guifont=FiraCode_NF:h12
@@ -31,6 +26,11 @@ endif
 " OS {{{
 
 " Mac {{{
+if has("gui_macvim")
+    set lines=48 columns=108
+    autocmd BufEnter * set guioptions+=!
+    autocmd BufNewFile * set guioptions-=!
+endif
 " }}}
 " Linux {{{
 " }}}
@@ -40,6 +40,9 @@ if has("win32")
     " Make shift-insert work like in Xterm
     map <S-Insert> <MiddleMouse>
     map! <S-Insert> <MiddleMouse>
+    " enable ligatures in gvim
+    set renderoptions=type:directx
+    autocmd InsertLeave * exec "redraw!"
 endif
 " }}}
 
