@@ -453,9 +453,9 @@ let g:gitgutter_sign_removed = '-'
 " }}}
 " vim fugitive config {{{
 if has("gui_macvim")
-    nnoremap <D-s> :Git status<CR>
+    nnoremap <M-s> :Git status<CR>
     " add guioptions '!' and make terminal output colored in mac
-    nnoremap <D-d> :!git diff<CR>
+    nnoremap <M-d> :!git diff<CR>
 else
     nnoremap <M-s> :Git status<CR>
     nnoremap <M-d> :!git diff<CR>
