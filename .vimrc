@@ -215,7 +215,6 @@ augroup filetype_edit_behavior
     autocmd BufWritePre * call TrimEndLinesAndTrailingSpaces()
 augroup END
 
-
 augroup keymap_force
     autocmd!
     autocmd FileType * :nnoremap <nowait> <Space> <C-f><CR>
@@ -398,7 +397,7 @@ Plug 'cespare/vim-toml'
 Plug 'chrisbra/unicode.vim'
 " org-mode for vim
 Plug 'jceb/vim-orgmode'
-Plug 'vim-autoformat/vim-autoformat'
+Plug 'Chiel92/vim-autoformat'
 " golang plugin
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " slide presentation based on markdown
@@ -524,6 +523,13 @@ let g:UltiSnipsJumpForwardTrigger="<C-]>"
 let g:UltiSnipsJumpBackwardTrigger="<C-[>"
 
 " }}}
+" vim autoformat {{{
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
+" c/c++ and javascript autoformat config
+autocmd BufWritePre *.c,*.cpp,*.h,*.js :Autoformat
+"}}}
 
 " }}}
 " colorscheme {{{

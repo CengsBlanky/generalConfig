@@ -1,0 +1,23 @@
+---
+BasedOnStyle: Google
+IndentWidth: 4
+UseTab: Never
+TabWidth: 4
+AlignTrailingComments: 'true'
+AlignConsecutiveDeclarations: Consecutive
+AlignConsecutiveAssignments: Consecutive
+AlignConsecutiveMacros: AcrossComments
+AlignEscapedNewlines: Left
+AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: Empty
+BreakBeforeBraces: Attach
+IncludeBlocks: Regroup
+IndentCaseLabels: 'true'
+PointerAlignment: Right
+SpacesBeforeTrailingComments: 2
+# SpaceBeforeParens: Always
+---
+Language: JavaScript
+IndentWidth: 2
+TabWidth: 2
+---
