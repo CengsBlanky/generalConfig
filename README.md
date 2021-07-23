@@ -44,3 +44,7 @@ Host openEuler
 * `vim -m`或者`vim -M`，两者都会禁止对文件进行任何更改
 > 以上两条命令进入vim之后，使用`:edit [file]`打开的其他文件也是只读的
 * 如果正在编辑文件，想打开一个只读文件进行参考，在vim命令行中输入`:view [file]`即可，只有新打开的buffer是只读的，不影响其他正在编辑的buffer
+
+### 使用autoformatter插件实现保存前自动格式化代码文本
+
+仓库新增clang-format.yaml文件，将该文件重命名为`.clang-format`放在代码项目根目录或者代码所在文件夹，插件会根据该文件规则对代码进行格式化
