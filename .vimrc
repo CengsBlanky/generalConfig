@@ -398,6 +398,11 @@ Plug 'chrisbra/unicode.vim'
 " org-mode for vim
 Plug 'jceb/vim-orgmode'
 Plug 'Chiel92/vim-autoformat'
+" frontend formatter
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 " golang plugin
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " slide presentation based on markdown
@@ -528,7 +533,7 @@ let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
 " c/c++ and javascript autoformat config
-autocmd BufWritePre *.c,*.cpp,*.h,*.js,*.java :Autoformat
+autocmd BufWritePre *.c,*.cpp,*.h,*.java :Autoformat
 "}}}
 
 " }}}
