@@ -10,14 +10,13 @@ AlignConsecutiveMacros: AcrossComments
 AlignEscapedNewlines: Left
 AllowShortBlocksOnASingleLine: Empty
 AllowShortFunctionsOnASingleLine: Empty
+AllowShortLoopsOnASingleLine: 'false'
 BreakBeforeBraces: Attach
+ColumnLimit: 0
 IncludeBlocks: Regroup
 IndentCaseLabels: 'true'
-PointerAlignment: Right
 SpacesBeforeTrailingComments: 2
+DerivePointerAlignment: 'false'
+PointerAlignment: Right
 # SpaceBeforeParens: Always
----
-Language: JavaScript
-IndentWidth: 2
-TabWidth: 2
 ---
