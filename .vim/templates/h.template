@@ -1,7 +1,8 @@
 /**
  * @author      : {{NAME}} ({{EMAIL}})
  * @created     : {{YEAR}}/{{MONTH}}/{{DATE}} {{TIME}} {{DAY_FULL}}
- * @filename    : {{FILEE}}
+ * @file        : {{FILEE}}
+ * @description : {{CURSOR}}
  */
 
 #ifndef {{MACRO_GUARD}}_INCLUDED
