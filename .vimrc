@@ -535,6 +535,9 @@ let g:autoformat_remove_trailing_spaces = 0
 " c/c++ and javascript autoformat config
 autocmd BufWritePre *.c,*.cpp,*.h,*.java :Autoformat
 "}}}
+" {{{
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
+"}}}
 
 " }}}
 " colorscheme {{{
