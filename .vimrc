@@ -523,9 +523,10 @@ let g:go_template_autocreate=0
 " Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
 " - https://github.com/Valloric/YouCompleteMe
 " - https://github.com/nvim-lua/completion-nvim
-let g:UltiSnipsExpandTrigger="<C-.>"
-let g:UltiSnipsJumpForwardTrigger="<C-]>"
-let g:UltiSnipsJumpBackwardTrigger="<C-[>"
+let g:UltiSnipsExpandTrigger="<C-s>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/plugins/vim-snippets/UltiSnips', "UltiSnips"]
 
 " }}}
 " vim autoformat {{{
@@ -535,7 +536,7 @@ let g:autoformat_remove_trailing_spaces = 0
 " c/c++ and javascript autoformat config
 autocmd BufWritePre *.c,*.cpp,*.h,*.java :Autoformat
 "}}}
-" {{{
+" {{{ prettier config
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
 "}}}
 
