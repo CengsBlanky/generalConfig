@@ -8,6 +8,6 @@
 #ifndef {{MACRO_GUARD}}_INCLUDED
 #define {{MACRO_GUARD}}_INCLUDED
 
-{{CURSOR}}
+
 
 #endif

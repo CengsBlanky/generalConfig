@@ -244,13 +244,7 @@ autocmd BufWritePost vim_config_file source vim_config_file
 " when creating new buffer, auto switch to insert mode
 autocmd BufNewFile * startinsert
 " delete other buffers {{{
-command! -nargs=? -complete=buffer -bang Bonly
-    \ :call BufOnly('<args>', '<bang>')
-command! -nargs=? -complete=buffer -bang BOnly
-    \ :call BufOnly('<args>', '<bang>')
-command! -nargs=? -complete=buffer -bang Bufonly
-    \ :call BufOnly('<args>', '<bang>')
-command! -nargs=? -complete=buffer -bang BufOnly
+command! -nargs=? -complete=buffer -bang bonly
     \ :call BufOnly('<args>', '<bang>')
 
 function! BufOnly(buffer, bang)
@@ -568,4 +562,4 @@ highlight Comment cterm=italic gui=italic
 " }}}
 
 " TODO add .vscode config file
-" TODO enable linguiture in gvim
+" TODO snippets integration optimize
