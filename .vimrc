@@ -563,3 +563,4 @@ highlight Comment cterm=italic gui=italic
 
 " TODO add .vscode config file
 " TODO snippets integration optimize
+" TODO learn vim sessions
