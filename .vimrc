@@ -326,6 +326,8 @@ func! CompileRunCode()
         exec "write | !node %:p"
     elseif &filetype=="go"
         exec "write | !go run %:p"
+    else
+        echo "unsupported code run for current buffer."
     endif
 endfunc
 
