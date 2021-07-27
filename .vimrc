@@ -244,7 +244,7 @@ autocmd BufWritePost vim_config_file source vim_config_file
 " when creating new buffer, auto switch to insert mode
 autocmd BufNewFile * startinsert
 " delete other buffers {{{
-command! -nargs=? -complete=buffer -bang bonly
+command! -nargs=? -complete=buffer -bang Bonly
     \ :call BufOnly('<args>', '<bang>')
 
 function! BufOnly(buffer, bang)
