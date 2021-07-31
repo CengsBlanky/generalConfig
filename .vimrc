@@ -348,66 +348,65 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 " vim comment toggle
 Plug 'tpope/vim-commentary'
-" auto insert paired brackets
-" Plug 'jiangmiao/auto-pairs'
+" auto close parenthese
 Plug 'cohama/lexima.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'qpkorr/vim-renamer'
 " better hlsearch
 Plug 'haya14busa/incsearch.vim'
 " file management nnn
 Plug 'mcchrish/nnn.vim'
-" vim templates
-Plug 'tibabit/vim-templates'
+" simple vim templates
+Plug 'aperezdc/vim-template'
 " show git diff in gutter
 Plug 'airblade/vim-gitgutter'
-" vim rust plugin
-Plug 'rust-lang/rust.vim'
 " fuzzy finder for vim
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " better statusline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" colorscheme
+" colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'joshdick/onedark.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'sheerun/vim-polyglot'
-" css color preview
-Plug 'ap/vim-css-color'
-" vim webAPIs
-Plug 'mattn/webapi-vim'
-" easymotion
-Plug 'easymotion/vim-easymotion'
 " fileype and syntax plugin for LaTeX filest
 Plug 'lervag/vimtex'
-" markdown plugin
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-" toml file plugin
-Plug 'cespare/vim-toml'
+" css color preview
+Plug 'ap/vim-css-color'
+" easymotion
+Plug 'easymotion/vim-easymotion'
+" vim webAPIs
+Plug 'mattn/webapi-vim'
 " use unicode in vim easily
 Plug 'chrisbra/unicode.vim'
-" org-mode for vim
-Plug 'jceb/vim-orgmode'
-Plug 'Chiel92/vim-autoformat'
+" autoformat plugin
+Plug 'vim-autoformat/vim-autoformat'
 " frontend formatter
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+" vim rust plugin
+Plug 'rust-lang/rust.vim'
 " golang plugin
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" markdown plugin
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+" toml file plugin
+Plug 'cespare/vim-toml'
+" org-mode for vim
+Plug 'jceb/vim-orgmode'
 " slide presentation based on markdown
 Plug 'sotte/presenting.vim'
 " snippets engine and Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-" filetype icon (always keeps at the bottom plugin list)
+" filetype icon (always keeps at the bottom of plugin list)
 Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
@@ -434,9 +433,9 @@ if !has("win32")
 endif
 " }}}
 " vim templates config{{{
-let g:tmpl_search_paths=["~/.vim/templates/"]
-let g:tmpl_author_name='zengshuai'
-let g:tmpl_author_email='zengs1994@gmail.com'
+let g:templates_directory=["~/.vim/templates/"]
+let g:username='zengshuai'
+let g:email='zengs1994@gmail.com'
 " }}}
 " tpope commentary config{{{
 augroup commentary_vim
