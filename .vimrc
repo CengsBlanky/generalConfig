@@ -217,7 +217,7 @@ augroup END
 
 augroup keymap_force
     autocmd!
-    autocmd FileType * :nnoremap <nowait> <Space> <C-f><CR>
+    autocmd FileType * nnoremap <nowait> <Space> <C-f>
 augroup END
 
 augroup windows_display
