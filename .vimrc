@@ -13,7 +13,7 @@ if terminal_type!=?"MINGW64"
     execute 'source' plug_config_file
 else
     set background=dark
-    colorscheme default
+    colorscheme murphy
 endif
 
 " }}}
