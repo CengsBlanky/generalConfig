@@ -559,7 +559,7 @@ endif
 set termguicolors
 set t_Co=256
 " enable Comment italic
-highlight Comment cterm=italic gui=italic
+" highlight Comment cterm=italic gui=italic
 
 " }}}
 
