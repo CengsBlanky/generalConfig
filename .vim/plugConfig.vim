@@ -12,8 +12,6 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 " better hlsearch
 Plug 'haya14busa/incsearch.vim'
-" file management nnn
-Plug 'mcchrish/nnn.vim'
 " simple vim templates
 Plug 'aperezdc/vim-template'
 " show git diff in gutter
@@ -31,35 +29,31 @@ Plug 'joshdick/onedark.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'sheerun/vim-polyglot'
 " fileype and syntax plugin for LaTeX filest
-Plug 'lervag/vimtex'
+" Plug 'lervag/vimtex', {'for': 'tex'}
 " css color preview
-Plug 'ap/vim-css-color'
+Plug 'ap/vim-css-color', {'for': ['css', 'vue', 'javascript', 'html', 'less', 'scss']}
 " easymotion
 Plug 'easymotion/vim-easymotion'
 " vim webAPIs
 Plug 'mattn/webapi-vim'
-" use unicode in vim easily
-Plug 'chrisbra/unicode.vim'
 " autoformat plugin
-Plug 'vim-autoformat/vim-autoformat'
+Plug 'vim-autoformat/vim-autoformat', {'for': ['c', 'cpp', 'java']}
 " frontend formatter
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+  \ 'on': ['Prettier', 'AsnycPrettier'],
+  \ 'do': 'yarn install'}
 " vim rust plugin
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', {'for': 'rust'}
 " golang plugin
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoUpdateBinaries' }
 " markdown plugin
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular', {'for': 'markdown'}
+Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 " toml file plugin
-Plug 'cespare/vim-toml'
-" org-mode for vim
-Plug 'jceb/vim-orgmode'
+Plug 'cespare/vim-toml', {'for': 'toml'}
 " slide presentation based on markdown
-Plug 'sotte/presenting.vim'
+Plug 'sotte/presenting.vim', {'for': 'markdown'}
 " snippets engine and Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
