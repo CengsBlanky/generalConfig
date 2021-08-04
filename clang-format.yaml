@@ -4,8 +4,8 @@ IndentWidth: 4
 UseTab: Never
 TabWidth: 4
 AlignTrailingComments: 'true'
-AlignConsecutiveDeclarations: Consecutive
-AlignConsecutiveAssignments: Consecutive
+AlignConsecutiveDeclarations: 'false'
+AlignConsecutiveAssignments: 'false'
 AlignConsecutiveMacros: AcrossComments
 AlignEscapedNewlines: Left
 AllowShortBlocksOnASingleLine: Empty
