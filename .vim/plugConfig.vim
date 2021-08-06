@@ -1,10 +1,8 @@
 " plugins {{{
 execute 'source' plug_file
 call plug#begin(fnameescape(plugin_path))
-" git integrations for vim
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-" vim comment toggle
 Plug 'tpope/vim-commentary'
 " auto close parenthese
 Plug 'cohama/lexima.vim'
@@ -12,59 +10,39 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 " better hlsearch
 Plug 'haya14busa/incsearch.vim'
-" simple vim templates
 Plug 'aperezdc/vim-template'
-" show git diff in gutter
 Plug 'airblade/vim-gitgutter'
-" fuzzy finder for vim
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" better statusline
+Plug 'ap/vim-css-color', {'for': ['css', 'vue', 'javascript', 'html', 'less', 'scss']}
+Plug 'easymotion/vim-easymotion'
+Plug 'mattn/webapi-vim'
+Plug 'vim-autoformat/vim-autoformat', {'for': ['c', 'cpp', 'java']}
+Plug 'prettier/vim-prettier', {
+  \ 'on': ['Prettier', 'AsnycPrettier'],
+  \ 'do': 'yarn install'}
+Plug 'rust-lang/rust.vim', {'for': 'rust'}
+Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoUpdateBinaries' }
+Plug 'godlygeek/tabular', {'for': 'markdown'}
+Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+Plug 'cespare/vim-toml', {'for': 'toml'}
+Plug 'sotte/presenting.vim', {'for': 'markdown'}
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+" colorscheme & statusline {{{
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'joshdick/onedark.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'sheerun/vim-polyglot'
-" fileype and syntax plugin for LaTeX filest
-" Plug 'lervag/vimtex', {'for': 'tex'}
-" css color preview
-Plug 'ap/vim-css-color', {'for': ['css', 'vue', 'javascript', 'html', 'less', 'scss']}
-" easymotion
-Plug 'easymotion/vim-easymotion'
-" vim webAPIs
-Plug 'mattn/webapi-vim'
-" autoformat plugin
-Plug 'vim-autoformat/vim-autoformat', {'for': ['c', 'cpp', 'java']}
-" frontend formatter
-" post install (yarn install | npm install) then load plugin only for editing supported files
-Plug 'prettier/vim-prettier', {
-  \ 'on': ['Prettier', 'AsnycPrettier'],
-  \ 'do': 'yarn install'}
-" vim rust plugin
-Plug 'rust-lang/rust.vim', {'for': 'rust'}
-" golang plugin
-Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoUpdateBinaries' }
-" markdown plugin
-Plug 'godlygeek/tabular', {'for': 'markdown'}
-Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
-" toml file plugin
-Plug 'cespare/vim-toml', {'for': 'toml'}
-" slide presentation based on markdown
-Plug 'sotte/presenting.vim', {'for': 'markdown'}
-" snippets engine and Snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
+" }}}
 " filetype icon (always keeps at the bottom of plugin list)
 Plug 'ryanoasis/vim-devicons'
-
 call plug#end()
 " }}}
 " plugins setting {{{
-
 " haya14busa/incsearch.vim {{{
 " automatically turn off hlsearch
 let g:incsearch#auto_nohlsearch = 1
@@ -76,35 +54,27 @@ map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
 " }}}
-" nnn config{{{
-" Floating window (neovim latest and vim with patch 8.2.191)
-if !has("win32")
-    let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
-    " replace nerdtree with nnn
-    let g:nnn#replace_netrw = 1
-endif
-" }}}
-" vim templates config{{{
+" aperezdc/vim-template {{{
 let g:templates_directory=["~/.vim/templates/"]
 let g:username='zengshuai'
 let g:email='zengs1994@gmail.com'
 " }}}
-" tpope commentary config{{{
+" tpope/vim-commentary {{{
 augroup commentary_vim
     autocmd!
     autocmd FileType c setlocal commentstring=//\ %s
     autocmd FileType cpp setlocal commentstring=//\ %s
 augroup END
 " }}}
-" coc config {{{
+" neoclide/coc.nvim {{{
 execute 'source' coc_config_file
 " }}}
-" better incsearch plugin setting {{{
+" haya14busa/incsearch.vim {{{
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 " }}}
-" vim airline config {{{
+" vim-airline/vim-airline {{{
 " Automatically displays all buffers when there's only one tab open.
 let g:airline#extensions#tabline#enabled = 1
 " enable fugitive show git info
@@ -114,7 +84,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_left_sep = ''
 
 " }}}
-" git-gutter {{{
+" airblade/vim-gitgutter {{{
 " coc-git has sign conflict, just don't use it
 let g:gitgutter_sign_priority = 0
 let g:gitgutter_sign_allow_clobber = 0
@@ -122,7 +92,7 @@ let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '*'
 let g:gitgutter_sign_removed = '-'
 " }}}
-" vim fugitive config {{{
+" tpope/vim-fugitive {{{
 nnoremap <M-s> :Git status<CR>
 " add guioptions '!' and make terminal output colored in mac
 nnoremap <M-d> :!git diff<CR>
@@ -131,10 +101,10 @@ nnoremap <leader>cm :Git commit -am "
 " git push
 nnoremap <leader>ps :Git push<CR>
 " }}}
-" fzf config {{{
+" junegunn/fzf {{{
 nnoremap <leader>z :Files<cr>
 " }}}
-" colorscheme plugin {{{
+" colorscheme plugins {{{
 if has("gui_running")
     " for light version of theme
     let ayucolor="light"
@@ -146,49 +116,45 @@ let g:onedark_hide_endofbuffer=1
 " let ayucolor="mirage" " for mirage version of theme
 
 " }}}
-" rust.vim setting {{{
+" rust-lang/rust.vim {{{
 let g:rustfmt_autosave = 1
 " }}}
-" easymotion {{{
+" easymotion/vim-easymotion {{{
 " use <leader>w to invoke easymotion, so do not add use <leader>w keybinding again
 map <leader> <Plug>(easymotion-prefix)
 " }}}
-" markdown plugin{{{
+" plasticboy/vim-markdown {{{
 " keybinding
 augroup markdown_keybinding
     autocmd!
     autocmd FileType markdown nnoremap <silent><leader>t :TableFormat<CR>
 augroup END
 " }}}
-" vim go setting {{{
+" fatih/vim-go {{{
 " autocmd FileType go nmap <leader>r <Plug>(go-run-split)
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_template_autocreate=0
 " }}}
-" UltiSnips {{{
+" SirVer/ultisnips {{{
 " Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
 " - https://github.com/Valloric/YouCompleteMe
 " - https://github.com/nvim-lua/completion-nvim
 let g:UltiSnipsExpandTrigger="<C-s>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
-" let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/plugins/vim-snippets/UltiSnips', "UltiSnips"]
-
 " }}}
-" vim autoformat {{{
+" vim-autoformat/vim-autoformat {{{
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
 " c/c++ and javascript autoformat config
 autocmd BufWritePre *.c,*.cpp,*.h,*.java :Autoformat
 "}}}
-" {{{ prettier config
+" prettier/vim-prettier {{{
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html Prettier
 "}}}
-
-" }}}
-" colorscheme {{{
+" colorscheme plugins {{{
 if has("gui_running")
     set background=light
     colorscheme ayu
@@ -206,4 +172,5 @@ endif
 " let g:airline_theme='onehalfdark'
 
 
+" }}}
 " }}}

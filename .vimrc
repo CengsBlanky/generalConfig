@@ -254,8 +254,6 @@ augroup BWCCreateDir
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
-" auto source vimrc after write
-autocmd BufWritePost vim_config_file source vim_config_file
 " when creating new buffer, auto switch to insert mode
 autocmd BufNewFile * startinsert
 " delete other buffers {{{
