@@ -25,6 +25,7 @@ Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoUpdateBinaries' }
 Plug 'godlygeek/tabular', {'for': 'markdown'}
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+Plug 'euclio/vim-markdown-composer', {'for': 'markdown'}
 Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'sotte/presenting.vim', {'for': 'markdown'}
 Plug 'SirVer/ultisnips'
@@ -102,7 +103,7 @@ nnoremap <leader>cm :Git commit -am "
 nnoremap <leader>ps :Git push<CR>
 " }}}
 " junegunn/fzf {{{
-nnoremap <leader>z :Files<cr>
+nnoremap <C-p> :Files<cr>
 " }}}
 " colorscheme plugins {{{
 if has("gui_running")
@@ -125,10 +126,15 @@ map <leader> <Plug>(easymotion-prefix)
 " }}}
 " plasticboy/vim-markdown {{{
 " keybinding
+let g:vim_markdown_folding_disabled = 1
 augroup markdown_keybinding
     autocmd!
     autocmd FileType markdown nnoremap <silent><leader>t :TableFormat<CR>
 augroup END
+" }}}
+" euclio/vim-markdown-composer {{{
+autocmd BufWritePost *.md :ComposerUpdate
+let g:markdown_composer_open_browser = 0
 " }}}
 " fatih/vim-go {{{
 " autocmd FileType go nmap <leader>r <Plug>(go-run-split)
@@ -152,7 +158,7 @@ let g:autoformat_remove_trailing_spaces = 0
 autocmd BufWritePre *.c,*.cpp,*.h,*.java :Autoformat
 "}}}
 " prettier/vim-prettier {{{
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html Prettier
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.svelte,*.yaml,*.html Prettier
 "}}}
 " colorscheme plugins {{{
 if has("gui_running")
