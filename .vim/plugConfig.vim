@@ -38,6 +38,9 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'joshdick/onedark.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'sheerun/vim-polyglot'
+if has('nvim')
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+endif
 " }}}
 " filetype icon (always keeps at the bottom of plugin list)
 Plug 'ryanoasis/vim-devicons'
@@ -105,18 +108,6 @@ nnoremap <leader>ps :Git push<CR>
 " junegunn/fzf {{{
 nnoremap <C-p> :Files<cr>
 " }}}
-" colorscheme plugins {{{
-if has("gui_running")
-    " for light version of theme
-    let ayucolor="light"
-else
-    let ayucolor="dark"
-endif
-let g:onedark_terminal_italics=1
-let g:onedark_hide_endofbuffer=1
-" let ayucolor="mirage" " for mirage version of theme
-
-" }}}
 " rust-lang/rust.vim {{{
 let g:rustfmt_autosave = 1
 " }}}
@@ -161,10 +152,13 @@ autocmd BufWritePre *.c,*.cpp,*.h,*.java :Autoformat
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.svelte,*.yaml,*.html Prettier
 "}}}
 " colorscheme plugins {{{
-if has("gui_running")
-    set background=light
+let g:onedark_hide_endofbuffer=1
+" let ayucolor="mirage" " for mirage version of theme
+if has("gui_running") || has("nvim")
+    set background=dark
     colorscheme ayu
-    let g:airline_theme='onehalflight'
+    let ayucolor="mirage"
+    " let g:airline_theme='onehalfdark'
 else
     set background=dark
     colorscheme gruvbox

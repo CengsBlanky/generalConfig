@@ -27,6 +27,11 @@ set guioptions-=L
 " because it might conflicts with some key binding
 set guioptions+=M
 
+if has("nvim")
+    set guifont=FiraCode\ NF:h12
+    let g:python3_host_prog='i:/python3.9/python.exe'
+endif
+
 if has("win32")
     set guifont=FiraCode_NF:h12
 else
@@ -50,7 +55,7 @@ if has("gui_macvim")
 endif
 " }}}
 " Windows {{{
-if has("win32")
+if has("win32") && !has("nvim")
     let language_set="en-us"
     " Make shift-insert work like in Xterm
     map <S-Insert> <MiddleMouse>
@@ -352,5 +357,4 @@ augroup END
 " }}}
 
 " TODO add .vscode config file
-" TODO snippets integration optimize
 " TODO learn vim sessions
