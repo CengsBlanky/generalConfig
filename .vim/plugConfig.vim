@@ -154,11 +154,12 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 " colorscheme plugins {{{
 let g:onedark_hide_endofbuffer=1
 " let ayucolor="mirage" " for mirage version of theme
-if has("gui_running") || has("nvim")
-    set background=dark
+if (has("gui_running") || has("nvim")) && has("win32")
+    set background=light
     colorscheme ayu
-    let ayucolor="mirage"
-    " let g:airline_theme='onehalfdark'
+    let ayucolor="light"
+    " let g:airline_theme='papercolor'
+    let g:airline_theme='onehalflight'
 else
     set background=dark
     colorscheme gruvbox

@@ -46,7 +46,6 @@ set t_Co=256
 
 " }}}
 " OS {{{
-
 " Mac {{{
 if has("gui_macvim")
     set lines=48 columns=108
@@ -65,7 +64,6 @@ if has("win32") && !has("nvim")
     autocmd InsertLeave * exec "redraw!"
 endif
 " }}}
-
 " }}}
 " editor {{{
 " default {{{
