@@ -27,7 +27,7 @@ set guioptions-=L
 " because it might conflicts with some key binding
 set guioptions+=M
 
-if has("nvim")
+if has("nvim") && has("win32")
     set guifont=FiraCode\ NF:h12
     let g:python3_host_prog='i:/python3.9/python.exe'
 endif
