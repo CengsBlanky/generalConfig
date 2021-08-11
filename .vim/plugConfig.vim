@@ -38,7 +38,7 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'joshdick/onedark.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'sheerun/vim-polyglot'
-if has('nvim')
+if has('nvim') && v:version > 800
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 " }}}
