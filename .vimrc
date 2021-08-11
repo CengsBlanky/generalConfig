@@ -217,7 +217,7 @@ augroup END
 augroup filetype_styleset
     autocmd!
     autocmd FileType json,text,markdown,vim,xml,properties,toml setlocal colorcolumn=0
-    autocmd FileType rust,html,vue,sh setlocal colorcolumn=99
+    autocmd FileType cpp,rust,html,vue,sh setlocal colorcolumn=99
 augroup END
 
 function TrimEndLinesAndTrailingSpaces()
