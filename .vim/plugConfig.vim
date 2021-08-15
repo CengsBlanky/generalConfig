@@ -40,6 +40,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'mhartington/oceanic-next'
+Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " }}}
@@ -160,8 +161,7 @@ if (has("gui_running") || has("nvim")) && has("win32")
     let g:airline_theme='onehalflight'
 else
     set background=dark
-    colorscheme ayu
-    let ayucolor="mirage"
+    colorscheme Monokai
     let g:airline_theme='tomorrow'
 endif
 " colorscheme OceanicNext
