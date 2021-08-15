@@ -163,6 +163,7 @@ else
     set background=dark
     colorscheme Monokai
     let g:airline_theme='tomorrow'
+    autocmd FileType markdown colorscheme Tomorrow
 endif
 " colorscheme OceanicNext
 " colorscheme ayu
