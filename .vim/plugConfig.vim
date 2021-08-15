@@ -30,14 +30,18 @@ Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'sotte/presenting.vim', {'for': 'markdown'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+if has('nvim')
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+endif
 " colorscheme & statusline {{{
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'joshdick/onedark.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'mhartington/oceanic-next'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " }}}
 " filetype icon (always keeps at the bottom of plugin list)
 Plug 'ryanoasis/vim-devicons'
@@ -149,7 +153,6 @@ autocmd BufWritePre *.c,*.cpp,*.h,*.java :Autoformat
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.svelte,*.yaml,*.html Prettier
 "}}}
 " colorscheme plugins {{{
-let g:onedark_hide_endofbuffer=1
 if (has("gui_running") || has("nvim")) && has("win32")
     set background=light
     colorscheme ayu
@@ -161,15 +164,33 @@ else
     let ayucolor="mirage"
     let g:airline_theme='tomorrow'
 endif
-
+" colorscheme OceanicNext
+" colorscheme ayu
+" let ayucolor="mirage"
 " colorscheme gruvbox
 " colorscheme onedark
-" colorscheme onehalflight
 " colorscheme onehalflight
 " colorscheme onehalfdark
 " let g:airline_theme='papercolor'
 " let g:airline_theme='onehalfdark'
 
+if has('nvim')
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "c", "java", "javascript", "cpp" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = {}, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = {},  -- list of language that will be disabled
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
+endif
 
 " }}}
 " }}}
