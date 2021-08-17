@@ -85,6 +85,8 @@ map g/ <Plug>(incsearch-stay)
 let g:airline#extensions#tabline#enabled = 1
 " enable fugitive show git info
 let g:airline#extensions#fugitiveline#enabled = 1
+let g:airline#extensions#branch#empty_message = ''
+let g:airline#extensions#branch#enabled = 1
 let g:airline_skip_empty_sections = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_left_sep = ''
@@ -154,6 +156,7 @@ autocmd BufWritePre *.c,*.cpp,*.h,*.java :Autoformat
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.svelte,*.yaml,*.html Prettier
 "}}}
 " colorscheme plugins {{{
+
 if (has("gui_running") || has("nvim")) && has("win32")
     set background=light
     colorscheme ayu
@@ -161,10 +164,20 @@ if (has("gui_running") || has("nvim")) && has("win32")
     let g:airline_theme='onehalflight'
 else
     set background=dark
-    colorscheme Monokai
-    let g:airline_theme='tomorrow'
-    autocmd FileType markdown colorscheme Tomorrow
+    colorscheme gruvbox
+    let g:gruvbox_contrast_dark='hard'
+    let g:gruvbox_italic=1
+    autocmd FileType markdown set background=light
+    autocmd FileType markdown let ayucolor="light"
+    autocmd FileType markdown colorscheme ayu
+    autocmd FileType markdown let g:airline_theme='onehalflight'
+    let g:airline_theme='apprentice'
 endif
+
+set termguicolors
+" autocmd FileType markdown colorscheme Tomorrow
+" autocmd FileType markdown let g:airline_theme='tomorrow'
+" let g:airline_theme='apprentice'
 " colorscheme OceanicNext
 " colorscheme ayu
 " let ayucolor="mirage"

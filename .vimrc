@@ -15,7 +15,6 @@ else
     set background=dark
     colorscheme slate
 endif
-
 " }}}
 " GUI {{{
 " must put on top
@@ -152,9 +151,6 @@ nnoremap <leader>cd :lcd %:p:h<cr>
 noremap <leader>t :tabnext<CR>
 " map <esc> to quit terminal mode
 tnoremap <Esc> <C-\><C-n>
-" upper or lower wordcase
-nnoremap <leader>u gUiw
-nnoremap <leader>l guiw
 " open NERDTreeToggle
 noremap <silent><F1> :NERDTreeToggle<CR>
 " split current window
