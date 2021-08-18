@@ -30,14 +30,19 @@ Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'sotte/presenting.vim', {'for': 'markdown'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+if has('nvim')
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+endif
 " colorscheme & statusline {{{
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'joshdick/onedark.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'mhartington/oceanic-next'
+Plug 'flazz/vim-colorschemes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " }}}
 " filetype icon (always keeps at the bottom of plugin list)
 Plug 'ryanoasis/vim-devicons'
@@ -80,6 +85,8 @@ map g/ <Plug>(incsearch-stay)
 let g:airline#extensions#tabline#enabled = 1
 " enable fugitive show git info
 let g:airline#extensions#fugitiveline#enabled = 1
+let g:airline#extensions#branch#empty_message = ''
+let g:airline#extensions#branch#enabled = 1
 let g:airline_skip_empty_sections = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_left_sep = ''
@@ -149,7 +156,7 @@ autocmd BufWritePre *.c,*.cpp,*.h,*.java :Autoformat
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.svelte,*.yaml,*.html Prettier
 "}}}
 " colorscheme plugins {{{
-let g:onedark_hide_endofbuffer=1
+
 if (has("gui_running") || has("nvim")) && has("win32")
     set background=light
     colorscheme ayu
@@ -157,19 +164,47 @@ if (has("gui_running") || has("nvim")) && has("win32")
     let g:airline_theme='onehalflight'
 else
     set background=dark
-    colorscheme ayu
-    let ayucolor="mirage"
-    let g:airline_theme='tomorrow'
+    colorscheme gruvbox
+    let g:gruvbox_contrast_dark='hard'
+    let g:gruvbox_italic=1
+    autocmd FileType markdown set background=light
+    autocmd FileType markdown let ayucolor="light"
+    autocmd FileType markdown colorscheme ayu
+    autocmd FileType markdown let g:airline_theme='onehalflight'
+    let g:airline_theme='apprentice'
 endif
 
+set termguicolors
+" autocmd FileType markdown colorscheme Tomorrow
+" autocmd FileType markdown let g:airline_theme='tomorrow'
+" let g:airline_theme='apprentice'
+" colorscheme OceanicNext
+" colorscheme ayu
+" let ayucolor="mirage"
 " colorscheme gruvbox
 " colorscheme onedark
-" colorscheme onehalflight
 " colorscheme onehalflight
 " colorscheme onehalfdark
 " let g:airline_theme='papercolor'
 " let g:airline_theme='onehalfdark'
 
+if has('nvim')
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "c", "java", "javascript", "cpp" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = {}, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = {},  -- list of language that will be disabled
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
+endif
 
 " }}}
 " }}}
