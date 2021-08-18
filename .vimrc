@@ -121,7 +121,7 @@ set linebreak
 set sidescroll=5
 set listchars+=precedes:<,extends:>
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=1
 " }}}
 " keymappings {{{
 
