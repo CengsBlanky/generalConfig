@@ -30,7 +30,7 @@ Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'sotte/presenting.vim', {'for': 'markdown'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-if has('nvim')
+if has('nvim-0.5.0')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 " colorscheme & statusline {{{
@@ -189,7 +189,7 @@ set termguicolors
 " let g:airline_theme='papercolor'
 " let g:airline_theme='onehalfdark'
 
-if has('nvim')
+if has('nvim-0.5.0')
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "c", "java", "javascript", "vue", "css", "cpp" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
