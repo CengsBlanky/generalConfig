@@ -146,7 +146,7 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 "}}}
 " RRethy/vim-hexokinase {{{
 if has('nvim')
-let g:Hexokinase_highlighters = ['virtual']
+    let g:Hexokinase_highlighters = ['virtual']
 endif
 " }}}
 " colorscheme plugins {{{
@@ -161,11 +161,6 @@ else
     colorscheme gruvbox
     let g:gruvbox_contrast_dark='hard'
     let g:gruvbox_italic=1
-    autocmd FileType markdown set background=light
-    autocmd FileType markdown let ayucolor="light"
-    autocmd FileType markdown colorscheme ayu
-    autocmd FileType markdown let g:airline_theme='onehalflight'
-    " autocmd FileType vue colorscheme onehalfdark
     let g:airline_theme='apprentice'
 endif
 if has('nvim') && has('win32')
