@@ -114,7 +114,6 @@ set hlsearch
 set mousehide
 set noshowmode
 set nocursorline
-set colorcolumn=81
 set signcolumn=yes
 set linebreak
 set sidescroll=5
@@ -210,8 +209,8 @@ augroup END
 
 augroup filetype_styleset
     autocmd!
-    autocmd FileType json,text,markdown,vim,xml,properties,toml setlocal colorcolumn=0
-    autocmd FileType cpp,java,rust,html,vue,sh setlocal colorcolumn=101
+    autocmd FileType c,lua setlocal colorcolumn=81
+    autocmd FileType cpp,java,rust,html,vue,go setlocal colorcolumn=101
 augroup END
 
 function TrimEndLinesAndTrailingSpaces()
