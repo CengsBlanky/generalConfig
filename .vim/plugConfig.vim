@@ -171,6 +171,7 @@ else
     autocmd FileType markdown let ayucolor="light"
     autocmd FileType markdown colorscheme ayu
     autocmd FileType markdown let g:airline_theme='onehalflight'
+    " autocmd FileType vue colorscheme onehalfdark
     let g:airline_theme='apprentice'
 endif
 
@@ -191,7 +192,7 @@ set termguicolors
 if has('nvim')
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "java", "javascript", "cpp" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "c", "java", "javascript", "vue", "css", "cpp" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
