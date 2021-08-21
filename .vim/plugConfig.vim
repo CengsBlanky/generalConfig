@@ -14,7 +14,6 @@ Plug 'aperezdc/vim-template'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'ap/vim-css-color', {'for': ['css', 'vue', 'javascript', 'html', 'less', 'scss']}
 Plug 'easymotion/vim-easymotion'
 Plug 'mattn/webapi-vim'
 Plug 'vim-autoformat/vim-autoformat', {'for': ['c', 'cpp', 'java']}
@@ -34,12 +33,12 @@ if has('nvim-0.5.0')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 " colorscheme & statusline {{{
+Plug 'RRethy/vim-hexokinase', {'for': ['css', 'vue', 'javascript', 'html', 'less', 'scss']}
 Plug 'morhetz/gruvbox'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'joshdick/onedark.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'mhartington/oceanic-next'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -155,6 +154,9 @@ autocmd BufWritePre *.c,*.cpp,*.h,*.java :Autoformat
 " prettier/vim-prettier {{{
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.svelte,*.yaml,*.html Prettier
 "}}}
+" RRethy/vim-hexokinase {{{
+let g:Hexokinase_highlighters = ['virtual']
+" }}}
 " colorscheme plugins {{{
 
 if (has("gui_running") || has("nvim")) && has("win32")
