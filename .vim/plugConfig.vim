@@ -18,7 +18,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'mattn/webapi-vim'
 Plug 'vim-autoformat/vim-autoformat', {'for': ['c', 'cpp', 'java']}
 Plug 'prettier/vim-prettier', {
-  \ 'on': ['Prettier', 'AsnycPrettier'],
+  \ 'for': ['javascript', 'vue', 'html', 'css'],
   \ 'do': 'yarn install'}
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoUpdateBinaries' }
@@ -27,13 +27,11 @@ Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'euclio/vim-markdown-composer', {'for': 'markdown'}
 Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'sotte/presenting.vim', {'for': 'markdown'}
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 if has('nvim-0.5.0')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 " colorscheme & statusline {{{
-Plug 'RRethy/vim-hexokinase', {'for': ['css', 'vue', 'javascript', 'html', 'less', 'scss']}
+Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase', 'for': ['css', 'vue', 'javascript', 'html', 'less', 'scss']}
 Plug 'morhetz/gruvbox'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'joshdick/onedark.vim'
@@ -136,14 +134,6 @@ let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_template_autocreate=0
 " }}}
-" SirVer/ultisnips {{{
-" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
-" - https://github.com/Valloric/YouCompleteMe
-" - https://github.com/nvim-lua/completion-nvim
-let g:UltiSnipsExpandTrigger="<C-s>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
-" }}}
 " vim-autoformat/vim-autoformat {{{
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
@@ -152,10 +142,12 @@ let g:autoformat_remove_trailing_spaces = 0
 autocmd BufWritePre *.c,*.cpp,*.h,*.java :Autoformat
 "}}}
 " prettier/vim-prettier {{{
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.svelte,*.yaml,*.html Prettier
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.svelte,*.yaml,*.html PrettierAsync
 "}}}
 " RRethy/vim-hexokinase {{{
+if has('nvim')
 let g:Hexokinase_highlighters = ['virtual']
+endif
 " }}}
 " colorscheme plugins {{{
 
@@ -174,6 +166,13 @@ else
     autocmd FileType markdown colorscheme ayu
     autocmd FileType markdown let g:airline_theme='onehalflight'
     " autocmd FileType vue colorscheme onehalfdark
+    let g:airline_theme='apprentice'
+endif
+if has('nvim') && has('win32')
+    set background=dark
+    colorscheme gruvbox
+    let g:gruvbox_contrast_dark='hard'
+    let g:gruvbox_italic=1
     let g:airline_theme='apprentice'
 endif
 
