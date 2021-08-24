@@ -26,34 +26,12 @@ set guioptions-=L
 " because it might conflicts with some key binding
 set guioptions+=M
 
+set guifont=FiraCode\ NF:h12
 if has("nvim") && has("win32")
-    set guifont=FiraCode\ NF:h12
     let g:python3_host_prog='i:/python3.9/python.exe'
 endif
 
-if has("win32")
-    set guifont=FiraCode_NF:h12
-else
-    set guifont=FiraCode_NF:h16
-endif
-
-" enable true colors support
-set termguicolors
-set t_Co=256
-" enable Comment italic
-" highlight Comment cterm=italic gui=italic
-
-" }}}
-" OS {{{
-" Mac {{{
-if has("gui_macvim")
-    set lines=48 columns=108
-    autocmd BufEnter * set guioptions+=!
-    autocmd BufNewFile * set guioptions-=!
-endif
-" }}}
-" Windows {{{
-if has("win32") && !has("nvim")
+if has("win32") && has("vim") && has("gui_running")
     let language_set="en-us"
     " Make shift-insert work like in Xterm
     map <S-Insert> <MiddleMouse>
@@ -62,7 +40,6 @@ if has("win32") && !has("nvim")
     set renderoptions=type:directx
     autocmd InsertLeave * exec "redraw!"
 endif
-" }}}
 " }}}
 " editor {{{
 " default {{{
@@ -124,14 +101,12 @@ set cmdheight=1
 " keymappings {{{
 
 " close current window or buffer
-noremap <silent><M-w> :close<cr>
-noremap <silent><M-b> :bd<cr>
+noremap <silent><M-w> :close<CR>
+noremap <silent><M-b> :bd<CR>
 " use keystroke to open my vimrc
 nnoremap <silent><F2> :execute 'edit' vim_config_file<CR>
-" format json by python
-nnoremap <F4> :%!python -m json.tool<cr>
 " screen scroll add <nowait> to execute immediately
-" see autocmd_keymap_force to set scroll down
+" see autocmd keymap_force to set scroll down
 " use backspace to scroll up
 nnoremap <BS> <C-b>
 " <leader> <Enter> to create new line in normal mode
@@ -140,20 +115,15 @@ nnoremap <silent><nowait><leader><Enter> :set paste<CR>m`o<ESC>``:set nopaste<CR
 nnoremap <silent><nowait><RIGHT> :bn<CR>
 nnoremap <silent><nowait><LEFT> :bp<CR>
 nnoremap <silent><TAB> :bn<CR>
-" open file in tab with keys
-noremap <C-n> :tabedit
 " cd to current file directory
-nnoremap <leader>cd :lcd %:p:h<cr>
-" use <leader>w to close current window
-" noremap <leader>w :close<CR>
-" use <leader>t to go next tab
-noremap <leader>t :tabnext<CR>
+nnoremap <leader>cd :lcd %:p:h<CR>
 " map <esc> to quit terminal mode
 tnoremap <Esc> <C-\><C-n>
 " open NERDTreeToggle
 noremap <silent><F1> :NERDTreeToggle<CR>
 " split current window
-nnoremap <leader>- :split %<CR>
+nnoremap <leader>- :split<CR>
+nnoremap <leader>/ :vsplit<CR>
 " use <UP> and <DOWN> to scroll screen
 nnoremap <silent><UP> 1<C-U><DOWN>
 nnoremap <silent><DOWN> 1<C-D><UP>
@@ -179,7 +149,7 @@ endfunc
 nnoremap <silent> gof :call File_manager()<CR>
 "}}}
 
-" to use `ALT/Meta+{h,j,k,l}` to navigate windows from any mode: {{{
+" to use `Meta+{h,j,k,l}` to navigate windows from any mode: {{{
 tnoremap <M-h> <C-\><C-N><C-w>h
 tnoremap <M-j> <C-\><C-N><C-w>j
 tnoremap <M-k> <C-\><C-N><C-w>k
@@ -324,19 +294,19 @@ func! CompileRunCode()
         return
     endif
     if &filetype=="c"
-        exec join(["write | !gcc -Wall -g *.c &&", target_binary], " ")
+        exec join(["wall | !gcc -Wall -g *.c &&", target_binary], " ")
     elseif &filetype=="cpp"
-        exec join(["write | !g++ -Wall -g *.cpp &&", target_binary], " ")
+        exec join(["wall | !g++ -Wall -g *.cpp &&", target_binary], " ")
     elseif &filetype=="java"
-        exec "write | !javac %:p && java %:r"
+        exec "wall | !javac %:p && java %:r"
     elseif &filetype=="python"
-        exec "write | !python %:p"
+        exec "wall | !python %:p"
     elseif &filetype=="javascript"
-        exec "write | !node %:p"
+        exec "wall | !node %:p"
     elseif &filetype=="go"
-        exec "write | !go run %:p"
+        exec "wall | !go run %:p"
     else
-        echo "unsupported code run for current buffer."
+        echo &filetype "unsupport code running or not implemented yet."
     endif
 endfunc
 
@@ -350,4 +320,3 @@ augroup END
 " }}}
 
 " TODO add .vscode config file
-" TODO learn vim sessions
