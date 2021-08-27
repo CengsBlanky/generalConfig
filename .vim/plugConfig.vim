@@ -145,7 +145,9 @@ let g:autoformat_remove_trailing_spaces = 0
 autocmd BufWritePre *.c,*.cpp,*.h,*.java :Autoformat
 "}}}
 " prettier/vim-prettier {{{
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.svelte,*.yaml,*.html PrettierAsync
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.svelte,*.yaml,*.html PrettierAsync
+autocmd BufEnter .prettierrc setlocal filetype=json
+nnoremap <F5> :Prettier<CR>
 "}}}
 " RRethy/vim-hexokinase {{{
 if has('nvim')
