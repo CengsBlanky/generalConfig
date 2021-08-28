@@ -179,8 +179,9 @@ augroup END
 
 augroup filetype_styleset
     autocmd!
-    autocmd FileType c,lua setlocal colorcolumn=81
-    autocmd FileType cpp,java,rust,go setlocal colorcolumn=101
+    autocmd FileType c,lua setlocal colorcolumn=91
+    autocmd FileType cpp,rust,go setlocal colorcolumn=101
+    autocmd FileType java setlocal colorcolumn=121
 augroup END
 
 function TrimEndLinesAndTrailingSpaces()
