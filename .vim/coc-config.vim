@@ -7,6 +7,7 @@ let g:coc_global_extensions=['coc-json', 'coc-xml',
             \ 'coc-vetur',
             \ 'coc-pyright',
             \ 'coc-java',
+            \ 'coc-sql',
             \ ]
 " Configure the directory which will be used to for coc data
 " files(extensions...)
@@ -69,8 +70,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -118,6 +119,8 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
+" Format whole buffer use Format
+nnoremap <C-f> :Format<CR>
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)

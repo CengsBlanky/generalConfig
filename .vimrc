@@ -174,7 +174,7 @@ augroup END
 
 augroup filetype_indent_size
     autocmd!
-    autocmd FileType html,css,javascript,typescript,vue setlocal tabstop=2 shiftwidth=2
+    autocmd FileType html,css,javascript,typescript,vue,yaml,sql setlocal tabstop=2 shiftwidth=2
 augroup END
 
 augroup filetype_styleset

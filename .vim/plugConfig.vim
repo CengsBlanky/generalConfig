@@ -27,6 +27,7 @@ Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'euclio/vim-markdown-composer', {'for': 'markdown'}
 Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'sotte/presenting.vim', {'for': 'markdown'}
+Plug 'jsborjesson/vim-uppercase-sql', {'for': 'sql'}
 if has('nvim-0.5.0')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
