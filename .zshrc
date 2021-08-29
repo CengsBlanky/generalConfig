@@ -136,6 +136,8 @@ if [ "${sysout}" = "Darwin" ]; then
     export PATH="/usr/local/opt/llvm:$PATH"
     # add rust path
     export PATH="$HOME/.cargo/bin:$PATH"
+    # add mysql path
+    export PATH="/usr/local/opt/mysql/bin:$PATH"
     # go path
     export GOPATH="$HOME/go"
     export GO111MODULE=auto
