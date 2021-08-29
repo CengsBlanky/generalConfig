@@ -206,8 +206,8 @@ augroup END
 
 augroup windows_display
     autocmd!
-    autocmd WinLeave * setlocal norelativenumber number
-    autocmd WinEnter * setlocal relativenumber
+    autocmd WinLeave * if &filetype!='help' | setlocal norelativenumber number
+    autocmd WinEnter * if &filetype!='help' | setlocal relativenumber
 augroup END
 
 function s:MkNonExDir(file, buf)
@@ -290,33 +290,30 @@ func! CompileRunCode()
         exec "wall | !make && make run"
         return
     endif
-    if filereadable('Cargo.toml')
-        exec "wall | !cargo run"
-        return
-    endif
     if &filetype=="c"
         exec join(["wall | !gcc -Wall -g *.c &&", target_binary], " ")
     elseif &filetype=="cpp"
         exec join(["wall | !g++ -Wall -g *.cpp &&", target_binary], " ")
     elseif &filetype=="java"
         exec "wall | !javac %:p && java %:r"
-    elseif &filetype=="python"
-        exec "wall | !python %:p"
-    elseif &filetype=="javascript"
-        exec "wall | !node %:p"
-    elseif &filetype=="go"
-        exec "wall | !go run %:p"
     else
+        exec "make"
         echo &filetype "unsupport code running or not implemented yet."
     endif
 endfunc
 
 augroup exe_single_file_code
     autocmd!
-    autocmd FileType c,cpp,java,python,javascript,go,rust
-            \ nnoremap <nowait><buffer> <leader>r
+    autocmd FileType c,cpp,java,go,python,javascript,rust
+            \ nnoremap <silent><nowait><buffer> <leader>r
             \ :call CompileRunCode()<CR>
 augroup END
+
+autocmd FileType go setlocal makeprg=go\ run\ %
+autocmd FileType python setlocal makeprg=python\ %
+autocmd FileType javascript setlocal makeprg=node\ %
+autocmd FileType rust setlocal makeprg=cargo\ run
+
 " }}}
 " }}}
 
