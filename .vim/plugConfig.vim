@@ -4,6 +4,7 @@ call plug#begin(fnameescape(plugin_path))
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
 " auto close parenthese
 Plug 'cohama/lexima.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
@@ -182,7 +183,7 @@ else
     set background=dark
     colorscheme gruvbox
     let g:gruvbox_contrast_dark='hard'
-    let g:gruvbox_italic=1
+    " let g:gruvbox_italic=1
     let g:airline_theme='apprentice'
 endif
 if has('nvim') && has('win32')
