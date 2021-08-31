@@ -298,7 +298,6 @@ func! CompileRunCode()
         exec "wall | !javac %:p && java %:r"
     else
         exec "make"
-        echo &filetype "unsupport code running or not implemented yet."
     endif
 endfunc
 
