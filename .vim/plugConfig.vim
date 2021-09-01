@@ -9,6 +9,8 @@ Plug 'tpope/vim-dispatch'
 Plug 'cohama/lexima.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'}
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+" vim multi languages debug tool
+Plug 'puremourning/vimspector'
 " better hlsearch
 Plug 'haya14busa/incsearch.vim'
 Plug 'aperezdc/vim-template'
