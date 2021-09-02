@@ -1,5 +1,6 @@
 """
-@author      : %USER% (%MAIL%)
-@created     : %FDATE%
-@description : %HERE%
+@author      : %USER%
+@since       : %FDATE%
 """
+
+%HERE%
