@@ -1,0 +1,10 @@
+# ignore directories
+node_modules
+target
+.git
+# ignore files
+*.prefs
+*.class
+*.out
+*.bin
+*.lock

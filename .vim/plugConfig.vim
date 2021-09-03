@@ -118,7 +118,24 @@ nnoremap <leader>cm :Git commit -am "
 nnoremap <leader>ps :Git push<CR>
 " }}}
 " junegunn/fzf {{{
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
+
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading  --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 nnoremap <C-p> :Files<cr>
+nnoremap <C-o> :RG<cr>
 " }}}
 " rust-lang/rust.vim {{{
 let g:rustfmt_autosave = 1
@@ -173,6 +190,8 @@ endif
 " }}}
 " kyazdani42/nvim-tree.lua {{{
 if has('nvim-0.5.0')
+    let g:nvim_tree_group_empty = 1 " 0 by default, compact folders that only contain a single folder into one node in the file tree
+    let g:nvim_tree_update_cwd = 1
     let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
     let g:nvim_tree_gitignore = 1 "0 by default
     let g:nvim_tree_auto_open = 0 "0 by default, opens the tree when typing `vim $DIR` or `vim`
