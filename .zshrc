@@ -139,6 +139,7 @@ if [ "${sysout}" = "Darwin" ]; then
     # add mysql path
     export PATH="/usr/local/opt/mysql/bin:$PATH"
     # go path
+    export PATH="$HOME/go/bin:$PATH"
     export GOPATH="$HOME/go"
     export GO111MODULE=auto
     export NVM_DIR="$HOME/.nvm"
