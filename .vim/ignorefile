@@ -1,6 +1,7 @@
 # ignore directories
 node_modules
 target
+dist
 .git
 # ignore files
 *.prefs
@@ -8,3 +9,5 @@ target
 *.out
 *.bin
 *.lock
+*.jpg
+*.png
