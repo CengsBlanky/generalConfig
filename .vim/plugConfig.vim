@@ -31,7 +31,7 @@ Plug 'euclio/vim-markdown-composer', {'for': 'markdown'}
 Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'sotte/presenting.vim', {'for': 'markdown'}
 Plug 'jsborjesson/vim-uppercase-sql', {'for': 'sql'}
-if has('nvim-0.5.0')
+if has('nvim-0.5.0') && !has('win32')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'preservim/vimux' " run command in tmux pane without leave vim window
     Plug 'kyazdani42/nvim-web-devicons' " for file icons
@@ -191,7 +191,7 @@ if has('nvim')
 endif
 " }}}
 " kyazdani42/nvim-tree.lua {{{
-if has('nvim-0.5.0')
+if has('nvim-0.5.0') && !has('win32')
     let g:nvim_tree_group_empty = 1 " 0 by default, compact folders that only contain a single folder into one node in the file tree
     let g:nvim_tree_update_cwd = 1
     let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
@@ -245,7 +245,7 @@ endif
 " enable Comment italic
 " highlight Comment cterm=italic gui=italic
 
-if has('nvim-0.5.0')
+if has('nvim-0.5.0') && !has('win32')
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "c", "java", "javascript", "vue", "css", "cpp" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
