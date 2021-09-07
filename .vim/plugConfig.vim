@@ -37,6 +37,8 @@ if has('nvim-0.5.0') && !has('win32')
     Plug 'kyazdani42/nvim-web-devicons' " for file icons
     Plug 'kyazdani42/nvim-tree.lua'
 endif
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
 " colorscheme & statusline {{{
 Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase', 'for': ['css', 'vue', 'javascript', 'html', 'less', 'scss']}
 Plug 'morhetz/gruvbox'
@@ -195,7 +197,7 @@ if has('nvim')
 endif
 " }}}
 " kyazdani42/nvim-tree.lua {{{
-if has('nvim-0.5.0') && !has('win32')
+if has('nvim-0.5.0')
     let g:nvim_tree_group_empty = 1 " 0 by default, compact folders that only contain a single folder into one node in the file tree
     let g:nvim_tree_update_cwd = 1
     let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
