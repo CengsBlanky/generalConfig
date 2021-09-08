@@ -225,8 +225,8 @@ if has("gui_running") && has("win32")
     let g:airline_theme='onehalflight'
 else
     colorscheme gruvbox
-    let g:gruvbox_contrast_dark='hard'
     let g:airline_theme='base16'
+    let g:gruvbox_contrast_dark='hard'
 endif
 " autocmd FileType markdown colorscheme Tomorrow
 " autocmd FileType markdown let g:airline_theme='tomorrow'
