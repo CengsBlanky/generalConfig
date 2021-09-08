@@ -122,6 +122,7 @@ alias ll='ls -lAh'
 alias vim='nvim'
 alias python="python3.9"
 alias pip="pip3.9"
+alias cls="clear"
 export "LANG=en_US.UTF-8"
 
 # use rg for fzf finder
