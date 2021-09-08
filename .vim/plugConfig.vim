@@ -31,6 +31,7 @@ Plug 'euclio/vim-markdown-composer', {'for': 'markdown'}
 Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'sotte/presenting.vim', {'for': 'markdown'}
 Plug 'jsborjesson/vim-uppercase-sql', {'for': 'sql'}
+Plug 'honza/vim-snippets'
 if has('nvim-0.5.0') && !has('win32')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'preservim/vimux' " run command in tmux pane without leave vim window

@@ -8,6 +8,7 @@ let g:coc_global_extensions=['coc-json', 'coc-xml',
             \ 'coc-pyright',
             \ 'coc-java',
             \ 'coc-sql',
+            \ 'coc-snippets',
             \ ]
 " Configure the directory which will be used to for coc data
 " files(extensions...)
