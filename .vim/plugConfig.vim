@@ -50,6 +50,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'tribela/vim-transparent'
 " }}}
 " filetype icon (always keeps at the bottom of plugin list)
 Plug 'ryanoasis/vim-devicons'
@@ -214,29 +215,19 @@ if has('nvim')
 endif
 " }}}
 " colorscheme plugins {{{
-set termguicolors
-set t_Co=256
 
-if (has("gui_running") || has("nvim")) && has("win32")
+set t_Co=256
+set termguicolors
+if has("gui_running") && has("win32")
     set background=light
     colorscheme ayu
     let ayucolor="light"
     let g:airline_theme='onehalflight'
 else
-    set background=dark
     colorscheme gruvbox
     let g:gruvbox_contrast_dark='hard'
-    " let g:gruvbox_italic=1
-    let g:airline_theme='apprentice'
+    let g:airline_theme='base16'
 endif
-if has('nvim') && has('win32')
-    set background=dark
-    colorscheme gruvbox
-    let g:gruvbox_contrast_dark='hard'
-    let g:gruvbox_italic=1
-    let g:airline_theme='apprentice'
-endif
-
 " autocmd FileType markdown colorscheme Tomorrow
 " autocmd FileType markdown let g:airline_theme='tomorrow'
 " let g:airline_theme='apprentice'
