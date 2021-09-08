@@ -127,6 +127,8 @@ nnoremap <leader>/ :vsplit<CR>
 " use <UP> and <DOWN> to scroll screen
 nnoremap <silent><UP> 1<C-U><DOWN>
 nnoremap <silent><DOWN> 1<C-D><UP>
+" save
+noremap <silent><S-s> :update<CR>
 
 "" Open explorer where current file is located {{{
 "" Only for win for now.
