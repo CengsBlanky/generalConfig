@@ -128,7 +128,14 @@ nnoremap <leader>/ :vsplit<CR>
 nnoremap <silent><UP> 1<C-U><DOWN>
 nnoremap <silent><DOWN> 1<C-D><UP>
 " save
-noremap <silent><S-s> :update<CR>
+nnoremap <Enter> :update<CR>
+" Execute 'lnoremap x X' and 'lnoremap X x' for each letter a-z.
+for c in range(char2nr('A'), char2nr('Z'))
+  execute 'lnoremap ' . nr2char(c+32) . ' ' . nr2char(c)
+  execute 'lnoremap ' . nr2char(c) . ' ' . nr2char(c+32)
+endfor
+" Kill the capslock when leaving insert mode.
+autocmd InsertLeave * set iminsert=0
 
 "" Open explorer where current file is located {{{
 "" Only for win for now.
@@ -298,6 +305,8 @@ func! CompileRunCode()
         exec join(["wall | !g++ -Wall -g *.cpp &&", target_binary], " ")
     elseif &filetype=="java"
         exec "wall | !javac %:p && java %:r"
+    elseif &filetype=="javascript"
+        exec "wall | !node %:p"
     else
         exec "make"
     endif
@@ -312,7 +321,6 @@ augroup END
 
 autocmd FileType go setlocal makeprg=go\ run\ %
 autocmd FileType python setlocal makeprg=python\ %
-autocmd FileType javascript setlocal makeprg=node\ %
 autocmd FileType rust setlocal makeprg=cargo\ run
 
 " }}}
