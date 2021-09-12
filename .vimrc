@@ -186,12 +186,12 @@ augroup filetype_indent_size
     autocmd FileType html,css,javascript,typescript,vue,yaml,sql setlocal tabstop=2 shiftwidth=2
 augroup END
 
-augroup filetype_styleset
-    autocmd!
-    autocmd FileType c,lua setlocal colorcolumn=91
-    autocmd FileType cpp,rust,go setlocal colorcolumn=101
-    autocmd FileType java setlocal colorcolumn=121
-augroup END
+" augroup filetype_styleset
+"     autocmd!
+"     autocmd FileType c,lua setlocal colorcolumn=91
+"     autocmd FileType cpp,rust,go setlocal colorcolumn=101
+"     autocmd FileType java setlocal colorcolumn=121
+" augroup END
 
 function TrimEndLinesAndTrailingSpaces()
     let save_cursor = getpos(".")
