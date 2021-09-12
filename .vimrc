@@ -300,9 +300,9 @@ func! CompileRunCode()
         return
     endif
     if &filetype=="c"
-        exec join(["wall | !gcc -Wall -g *.c &&", target_binary], " ")
+        exec join(["wall | !gcc -Wall *.c &&", target_binary], " ")
     elseif &filetype=="cpp"
-        exec join(["wall | !g++ -Wall -g *.cpp &&", target_binary], " ")
+        exec join(["wall | !g++ -Wall *.cpp &&", target_binary], " ")
     elseif &filetype=="java"
         exec "wall | !javac %:p && java %:r"
     elseif &filetype=="javascript"
