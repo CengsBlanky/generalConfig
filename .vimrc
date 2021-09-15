@@ -128,7 +128,7 @@ nnoremap <leader>/ :vsplit<CR>
 nnoremap <silent><UP> 1<C-U><DOWN>
 nnoremap <silent><DOWN> 1<C-D><UP>
 " save
-nnoremap <Enter> :update<CR>
+nnoremap <silent><Enter> :w<CR>
 " Execute 'lnoremap x X' and 'lnoremap X x' for each letter a-z.
 for c in range(char2nr('A'), char2nr('Z'))
   execute 'lnoremap ' . nr2char(c+32) . ' ' . nr2char(c)
