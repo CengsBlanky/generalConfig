@@ -160,6 +160,7 @@ if [ "${sysout}" = "Darwin" ]; then
 elif [ "${sysout}" = "Linux" ]; then
     alias l="ls -lh"
     alias la="ls -lAh"
+    alias lg="lazygit"
     # llvm setting
     export PATH="/usr/local/opt/llvm/bin:$PATH"
     export PATH="/usr/local/opt/llvm:$PATH"
