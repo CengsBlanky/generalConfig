@@ -119,9 +119,6 @@ nnoremap <leader>cd :lcd %:p:h<CR>
 tnoremap <Esc> <C-\><C-n>
 " open NERDTreeToggle
 noremap <silent><F1> :NERDTreeToggle<CR>
-" split current window
-nnoremap <leader>- :split<CR>
-nnoremap <leader>/ :vsplit<CR>
 " use <UP> and <DOWN> to scroll screen
 nnoremap <silent><UP> 1<C-U><DOWN>
 nnoremap <silent><DOWN> 1<C-D><UP>
@@ -170,6 +167,12 @@ nnoremap <M-j> <C-w>j
 nnoremap <M-k> <C-w>k
 nnoremap <M-l> <C-w>l
 " }}}
+" resize window
+nnoremap <silent><M-UP> :resize +2<CR>
+nnoremap <silent><M-DOWN> :resize -2<CR>
+" split current window
+nnoremap <silent><leader>- :split<CR>
+nnoremap <silent><leader>/ :vsplit<CR>
 
 " }}}
 " autocmd {{{
