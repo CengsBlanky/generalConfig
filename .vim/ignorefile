@@ -12,9 +12,12 @@ tags
 *.prefs
 *.class
 *.out
+*.exe
 *.o
 *.pyc
 *.bin
 *.lock
 *.jpg
 *.png
+*.zip
+*.pdf
