@@ -156,6 +156,7 @@ if [ "${sysout}" = "Darwin" ]; then
     alias python3='python3.9'
     alias pip='/usr/local/opt/python@3.9/bin/pip3'
     alias vi='/usr/local/Cellar/vim/8.2.3350/bin/vim'
+    alias lg="lazygit"
 elif [ "${sysout}" = "Linux" ]; then
     alias l="ls -lh"
     alias la="ls -lAh"
