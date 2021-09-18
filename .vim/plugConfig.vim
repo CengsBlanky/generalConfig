@@ -25,6 +25,7 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install'}
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoUpdateBinaries' }
+Plug 'pangloss/vim-javascript'
 Plug 'godlygeek/tabular', {'for': 'markdown'}
 Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
 Plug 'euclio/vim-markdown-composer', {'for': 'markdown'}
@@ -59,6 +60,10 @@ call plug#end()
 " plugins setting {{{
 " open NERDTreeToggle {{{
 let g:NERDTreeQuitOnOpen=3
+let NERDTreeIgnore=[
+    \ '\.lock$[[file]]', '\.o$[[file]]', '\.out$[[file]]', '\.class$[[file]]',
+    \ '^node_modules$[[dir]]', '^dist$[[dir]]', '^packages$[[dir]]'
+    \ ]
 noremap <silent><M-`> :NERDTreeToggle<CR>
 " }}}
 " haya14busa/incsearch.vim {{{
