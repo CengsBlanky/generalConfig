@@ -128,7 +128,7 @@ export "LANG=en_US.UTF-8"
 
 # use rg for fzf finder
 if type rg &> /dev/null; then
-    export FZF_DEFAULT_COMMAND='rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file ~/.vim/ignorefile'
+    export FZF_DEFAULT_COMMAND="rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.vim/ignorefile"
 fi
 
 # find out which system type I am currently use
@@ -151,6 +151,7 @@ if [ "${sysout}" = "Darwin" ]; then
     export GO111MODULE=auto
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    export VISUAL="nvim"
     alias la="exa --all --long --grid --links"
     alias l="exa --long --header --links --sort=name --git"
     alias python='python3.9'

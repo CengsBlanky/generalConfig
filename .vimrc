@@ -98,6 +98,9 @@ set cmdheight=1
 " }}}
 " keymappings {{{
 
+" quick upper/lower case
+nnoremap <leader>] gUiw
+nnoremap <leader>[ guiw
 " close current window or buffer
 noremap <silent><M-w> :close<CR>
 noremap <silent><M-b> :bd<CR>
@@ -117,8 +120,6 @@ nnoremap <silent><TAB> :bn<CR>
 nnoremap <leader>cd :lcd %:p:h<CR>
 " map <esc> to quit terminal mode
 tnoremap <Esc> <C-\><C-n>
-" open NERDTreeToggle
-noremap <silent><F1> :NERDTreeToggle<CR>
 " use <UP> and <DOWN> to scroll screen
 nnoremap <silent><UP> 1<C-U><DOWN>
 nnoremap <silent><DOWN> 1<C-D><UP>
@@ -336,6 +337,7 @@ if !exists("g:os")
 endif
 
 function! TermWrapper(command) abort
+    exec 'wa'
 	if !exists('g:split_term_style') | let g:split_term_style = 'vertical' | endif
 	if g:split_term_style ==# 'vertical'
 		let buffercmd = 'vnew'
@@ -364,4 +366,5 @@ autocmd FileType cpp nnoremap <leader>r :CompileAndRun<CR>
 " }}}
 " }}}
 
+" TODO use gnu stew to manage these dot files
 " TODO add .vscode config file
