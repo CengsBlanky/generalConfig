@@ -117,8 +117,6 @@ nnoremap <silent><TAB> :bn<CR>
 nnoremap <leader>cd :lcd %:p:h<CR>
 " map <esc> to quit terminal mode
 tnoremap <Esc> <C-\><C-n>
-" open NERDTreeToggle
-noremap <silent><F1> :NERDTreeToggle<CR>
 " use <UP> and <DOWN> to scroll screen
 nnoremap <silent><UP> 1<C-U><DOWN>
 nnoremap <silent><DOWN> 1<C-D><UP>

@@ -57,6 +57,10 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 " }}}
 " plugins setting {{{
+" open NERDTreeToggle {{{
+let g:NERDTreeQuitOnOpen=3
+noremap <silent><M-`> :NERDTreeToggle<CR>
+" }}}
 " haya14busa/incsearch.vim {{{
 " automatically turn off hlsearch
 let g:incsearch#auto_nohlsearch = 1
