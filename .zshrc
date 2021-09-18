@@ -127,7 +127,7 @@ export "LANG=en_US.UTF-8"
 
 # use rg for fzf finder
 if type rg &> /dev/null; then
-    export FZF_DEFAULT_COMMAND='rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file ~/.vim/ignorefile'
+    export FZF_DEFAULT_COMMAND="rg --files --hidden --column --line-number --no-heading --no-ignore --smart-case --ignore-file $HOME/.vim/ignorefile"
 fi
 
 # find out which system type I am currently use
