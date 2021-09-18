@@ -123,6 +123,7 @@ alias vim='nvim'
 alias python="python3.9"
 alias pip="pip3.9"
 alias cls="clear"
+alias multipull="find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} pull \;"
 export "LANG=en_US.UTF-8"
 
 # use rg for fzf finder
