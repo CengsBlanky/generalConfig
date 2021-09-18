@@ -98,6 +98,9 @@ set cmdheight=1
 " }}}
 " keymappings {{{
 
+" quick upper/lower case
+nnoremap <leader>] gUiw
+nnoremap <leader>[ guiw
 " close current window or buffer
 noremap <silent><M-w> :close<CR>
 noremap <silent><M-b> :bd<CR>
@@ -334,6 +337,7 @@ if !exists("g:os")
 endif
 
 function! TermWrapper(command) abort
+    exec 'wa'
 	if !exists('g:split_term_style') | let g:split_term_style = 'vertical' | endif
 	if g:split_term_style ==# 'vertical'
 		let buffercmd = 'vnew'
