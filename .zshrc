@@ -150,6 +150,7 @@ if [ "${sysout}" = "Darwin" ]; then
     export GO111MODULE=auto
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    export VISUAL="nvim"
     alias la="exa --all --long --grid --links"
     alias l="exa --long --header --links --sort=name --git"
     alias python='python3.9'
